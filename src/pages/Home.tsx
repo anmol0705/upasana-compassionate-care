@@ -66,57 +66,52 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section
-        className="relative min-h-[90vh] flex items-center justify-center bg-cover bg-center"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
-        <div className="container mx-auto px-4 relative z-10 text-white">
-          <div className="max-w-3xl space-y-6">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight animate-fade-in-up">
-              Empowering Your Child's Unique Journey
-            </h1>
-            <p className="text-xl md:text-2xl text-white/90 animate-fade-in-up animation-delay-200">
-              Expert early intervention and child development for special needs.
-              Welcome to Upasana.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 pt-4 animate-fade-in-up animation-delay-400">
-              <Link to="/contact">
-                <Button variant="pill" size="lg">
-                  Schedule a Consultation
-                  <ArrowRight className="h-5 w-5" />
-                </Button>
-              </Link>
-              <a href="tel:7033917890">
-                <Button variant="pill-outline" size="lg" className="bg-white/10 backdrop-blur-sm border-white text-white hover:bg-white hover:text-foreground">
-                  <Phone className="h-5 w-5" />
-                  Call Us: 7033917890
-                </Button>
-              </a>
-            </div>
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url(${heroImage})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
+        <div className="container mx-auto px-4 relative z-10 text-center animate-fade-in">
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+            Empowering Your Child's Unique Journey
+          </h1>
+          <p className="text-xl md:text-2xl text-white/95 mb-8 max-w-3xl mx-auto font-light">
+            Expert early intervention and child development for special needs – where every child's potential is nurtured with compassion and science
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Link to="/contact">
+              <Button variant="pill" size="lg" className="text-lg px-8 py-6">
+                Schedule a Consultation
+              </Button>
+            </Link>
+            <a href="tel:7033917890">
+              <Button variant="pill-outline" size="lg" className="text-lg px-8 py-6 bg-white/10 text-white border-white hover:bg-white hover:text-primary">
+                <Phone className="h-5 w-5" />
+                Call: 7033917890
+              </Button>
+            </a>
           </div>
         </div>
       </section>
 
       {/* Conditions We Support Section */}
-      <section className="py-20 bg-muted">
+      <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-4xl font-bold text-foreground mb-4">
+          <div className="text-center max-w-4xl mx-auto mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
               A Supportive Partner for Your Family
             </h2>
-            <p className="text-lg text-muted-foreground">
-              We provide specialized, compassionate care for children with a wide
-              range of developmental challenges. Our experts are here to help.
+            <p className="text-lg text-muted-foreground mb-6">
+              We work with children (ages 0-15 years) with a wide range of intellectual and developmental disabilities
             </p>
           </div>
-          <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-3 max-w-5xl mx-auto">
             {conditions.map((condition, index) => (
-              <ConditionTag
-                key={index}
-                name={condition.name}
-                color={condition.color}
-              />
+              <ConditionTag key={index} name={condition.name} color={condition.color} />
             ))}
           </div>
         </div>
@@ -186,20 +181,47 @@ const Home = () => {
       {/* Testimonial Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl p-12 relative">
-              <Quote className="absolute top-8 left-8 h-16 w-16 text-primary/20" />
-              <div className="relative z-10 text-center space-y-6">
-                <p className="text-2xl md:text-3xl font-medium text-foreground italic leading-relaxed">
-                  "A much needed Centre to provide therapy with personalized care
-                  and love. Great initiative."
-                </p>
-                <div className="pt-4">
-                  <p className="text-lg font-semibold text-primary">
-                    – Praveen Sharma
-                  </p>
-                </div>
+          <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
+            <div className="bg-card border border-border rounded-2xl p-12 shadow-card-hover">
+              <div className="mb-6">
+                <div className="text-6xl text-primary mb-4">"</div>
               </div>
+              <blockquote className="text-2xl text-foreground font-light italic mb-8 leading-relaxed">
+                A much needed Centre to provide therapy with personalized care and
+                love. Great initiative that truly makes a difference in the lives
+                of special children and their families.
+              </blockquote>
+              <p className="text-muted-foreground font-semibold">
+                – Praveen Sharma, Parent
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-br from-primary/10 via-secondary/10 to-yellow/10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              Ready to Begin Your Child's Journey?
+            </h2>
+            <p className="text-xl text-muted-foreground mb-8">
+              Schedule a consultation with our expert team today and discover how
+              we can support your child's development.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/contact">
+                <Button variant="pill" size="lg" className="text-lg px-8">
+                  Schedule a Consultation
+                </Button>
+              </Link>
+              <a href="tel:7033917890">
+                <Button variant="pill-outline" size="lg" className="text-lg px-8">
+                  <Phone className="h-5 w-5" />
+                  Call: 7033917890
+                </Button>
+              </a>
             </div>
           </div>
         </div>
