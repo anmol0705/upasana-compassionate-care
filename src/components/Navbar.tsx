@@ -72,15 +72,10 @@ const Navbar = () => {
 
           {/* CTA Button - Desktop */}
           <div className="hidden lg:flex items-center gap-3">
-            <a href="tel:7033917890">
-              <Button variant="pill-outline" size="sm">
-                <Phone className="h-4 w-4" />
-                Call Now
-              </Button>
-            </a>
             <Link to="/contact">
-              <Button variant="pill" size="sm">
-                Schedule a Consultation
+              <Button variant="pill" size="sm" className="gap-2">
+                <Phone className="h-4 w-4" />
+                Get Started
               </Button>
             </Link>
           </div>
@@ -118,15 +113,10 @@ const Navbar = () => {
                 </Link>
               ))}
               <div className="flex flex-col gap-2 pt-4 px-4">
-                <a href="tel:7033917890">
-                  <Button variant="pill-outline" size="default" className="w-full">
-                    <Phone className="h-4 w-4" />
-                    Call Now
-                  </Button>
-                </a>
                 <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Button variant="pill" size="default" className="w-full">
-                    Schedule a Consultation
+                  <Button variant="pill" size="default" className="w-full gap-2">
+                    <Phone className="h-4 w-4" />
+                    Get Started
                   </Button>
                 </Link>
               </div>

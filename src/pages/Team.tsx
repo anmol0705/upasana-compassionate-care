@@ -37,28 +37,28 @@ const Team = () => {
 
   return (
     <div className="min-h-screen pt-24 pb-16">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 sm:px-6">
         {/* Header */}
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <h1 className="text-5xl font-bold text-foreground mb-4">
+        <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-3 sm:mb-4">
             Meet Our Expert Team
           </h1>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-lg sm:text-xl text-muted-foreground">
             Compassionate professionals dedicated to your child's development
           </p>
         </div>
 
         {/* Lead Therapist Profile */}
-        <section className="mb-20 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl p-8 md:p-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-            <div className="order-2 lg:order-1 space-y-6">
-              <h2 className="text-4xl font-bold text-foreground">
+        <section className="mb-12 sm:mb-16 md:mb-20 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center max-w-6xl mx-auto">
+            <div className="order-2 lg:order-1 space-y-4 sm:space-y-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
                 Dr. Uma Sen Gupta (P.T)
               </h2>
-              <h3 className="text-2xl font-semibold text-primary">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-primary">
                 Vice Chairman & Head of Occupational Therapy
               </h3>
-              <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <div className="space-y-3 sm:space-y-4 text-sm sm:text-base text-muted-foreground leading-relaxed">
                 <p>
                   A pioneer in pediatric physiotherapy in Ranchi, Dr. Gupta began
                   her work in 1988. With over 37 years of experience, she is a
@@ -78,22 +78,24 @@ const Team = () => {
               </div>
             </div>
             <div className="order-1 lg:order-2">
-              <img
-                src={drImage}
-                alt="Dr. Uma Sen Gupta"
-                className="w-full rounded-xl shadow-card-hover"
-              />
+              <div className="relative w-full max-w-md mx-auto lg:max-w-none">
+                <img
+                  src={drImage}
+                  alt="Dr. Uma Sen Gupta"
+                  className="w-full h-auto object-cover rounded-xl shadow-card-hover aspect-[3/4] sm:aspect-[4/5]"
+                />
+              </div>
             </div>
           </div>
         </section>
 
         {/* Our Therapists Section */}
         <section>
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-foreground mb-4">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">
               Our Dedicated Professionals
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto px-4">
               Our team is comprised of certified and compassionate Speech
               Therapists, Special Educators, Physio-Occupational and Sensory
               Integration Therapists.

@@ -58,31 +58,31 @@ const Services = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-24 pb-16">
-      <div className="container mx-auto px-4">
+    <div className="min-h-screen pt-20 sm:pt-24 pb-12 sm:pb-16">
+      <div className="container mx-auto px-4 sm:px-6">
         {/* Header */}
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <h1 className="text-5xl font-bold text-foreground mb-4">
+        <div className="max-w-3xl mx-auto text-center mb-10 sm:mb-12 md:mb-16">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-3 sm:mb-4">
             Our Therapeutic Services
           </h1>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground px-4">
             Comprehensive, evidence-based therapies tailored to your child's needs
           </p>
         </div>
 
         {/* Services Accordion */}
         <div className="max-w-4xl mx-auto">
-          <Accordion type="single" collapsible className="space-y-4">
+          <Accordion type="single" collapsible className="space-y-3 sm:space-y-4">
             {services.map((service) => (
               <AccordionItem
                 key={service.id}
                 value={service.id}
-                className="bg-card border border-border rounded-xl px-6 shadow-card hover:shadow-card-hover transition-all duration-300"
+                className="bg-card border border-border rounded-xl px-4 sm:px-6 shadow-card hover:shadow-card-hover transition-all duration-300"
               >
-                <AccordionTrigger className="text-left text-xl font-semibold text-foreground hover:text-primary py-6">
+                <AccordionTrigger className="text-left text-base sm:text-lg md:text-xl font-semibold text-foreground hover:text-primary py-4 sm:py-6">
                   {service.title}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed pb-6">
+                <AccordionContent className="text-sm sm:text-base text-muted-foreground leading-relaxed pb-4 sm:pb-6">
                   {service.description}
                 </AccordionContent>
               </AccordionItem>

@@ -27,24 +27,24 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen pt-24 pb-16">
-      <div className="container mx-auto px-4">
+    <div className="min-h-screen pt-20 sm:pt-24 pb-12 sm:pb-16">
+      <div className="container mx-auto px-4 sm:px-6">
         {/* Header */}
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <h1 className="text-5xl font-bold text-foreground mb-4">
+        <div className="max-w-3xl mx-auto text-center mb-10 sm:mb-12 md:mb-16">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-3 sm:mb-4">
             Get in Touch
           </h1>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground px-4">
             Let's talk about your child's journey. Contact us today to schedule
             your first consultation.
           </p>
         </div>
 
         {/* Contact Form & Info */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto">
           {/* Contact Form */}
-          <div className="bg-card border border-border rounded-xl p-8 shadow-card">
-            <h2 className="text-2xl font-bold text-foreground mb-6">
+          <div className="bg-card border border-border rounded-xl p-6 sm:p-8 shadow-card">
+            <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-4 sm:mb-6">
               Send Us a Message
             </h2>
             <form onSubmit={handleSubmit} className="space-y-5">
@@ -148,9 +148,9 @@ const Contact = () => {
           </div>
 
           {/* Contact Info */}
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             <div>
-              <h2 className="text-2xl font-bold text-foreground mb-6">
+              <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-4 sm:mb-6">
                 Visit Our Centre
               </h2>
               <div className="space-y-6">
@@ -212,7 +212,7 @@ const Contact = () => {
             </div>
 
             {/* Map */}
-            <div className="rounded-xl overflow-hidden shadow-card-hover h-[400px]">
+            <div className="rounded-xl overflow-hidden shadow-card-hover h-[300px] sm:h-[350px] md:h-[400px]">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3662.8888507598246!2d85.32473931496634!3d23.35457648475754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4e1d8d8d8d8d8%3A0x8d8d8d8d8d8d8d8!2sYMCA%20School%2C%20Kantatoli%2C%20Ranchi!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
                 width="100%"
