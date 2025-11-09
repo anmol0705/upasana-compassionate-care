@@ -6,6 +6,7 @@ import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { toast } from "sonner";
 
 const Contact = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
     phone: "",
@@ -14,16 +15,40 @@ const Contact = () => {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    toast.success("Thank you! We'll get back to you soon.");
-    setFormData({
-      fullName: "",
-      phone: "",
-      email: "",
-      childAge: "",
-      message: "",
-    });
+    setIsSubmitting(true);
+
+    const form = e.currentTarget;
+    const formDataToSend = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: formDataToSend,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (response.ok) {
+        toast.success("Thank you! We'll get back to you soon.");
+        setFormData({
+          fullName: "",
+          phone: "",
+          email: "",
+          childAge: "",
+          message: "",
+        });
+        form.reset();
+      } else {
+        toast.error("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      toast.error("Unable to send message. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -47,7 +72,12 @@ const Contact = () => {
             <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-4 sm:mb-6">
               Send Us a Message
             </h2>
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form 
+              onSubmit={handleSubmit} 
+              action="https://formspree.io/f/YOUR_FORM_ID"
+              method="POST"
+              className="space-y-5"
+            >
               <div>
                 <label
                   htmlFor="fullName"
@@ -57,6 +87,7 @@ const Contact = () => {
                 </label>
                 <Input
                   id="fullName"
+                  name="fullName"
                   type="text"
                   value={formData.fullName}
                   onChange={(e) =>
@@ -76,6 +107,7 @@ const Contact = () => {
                 </label>
                 <Input
                   id="phone"
+                  name="phone"
                   type="tel"
                   value={formData.phone}
                   onChange={(e) =>
@@ -95,6 +127,7 @@ const Contact = () => {
                 </label>
                 <Input
                   id="email"
+                  name="email"
                   type="email"
                   value={formData.email}
                   onChange={(e) =>
@@ -113,6 +146,7 @@ const Contact = () => {
                 </label>
                 <Input
                   id="childAge"
+                  name="childAge"
                   type="text"
                   value={formData.childAge}
                   onChange={(e) =>
@@ -131,6 +165,7 @@ const Contact = () => {
                 </label>
                 <Textarea
                   id="message"
+                  name="message"
                   value={formData.message}
                   onChange={(e) =>
                     setFormData({ ...formData, message: e.target.value })
@@ -141,8 +176,14 @@ const Contact = () => {
                 />
               </div>
 
-              <Button type="submit" variant="pill" size="lg" className="w-full">
-                Send Message
+              <Button 
+                type="submit" 
+                variant="pill" 
+                size="lg" 
+                className="w-full"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
             </form>
           </div>
