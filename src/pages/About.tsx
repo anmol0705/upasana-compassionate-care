@@ -1,12 +1,42 @@
 import { CheckCircle2, Target, Eye, Heart, Lightbulb, Users } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { useState } from "react";
+import trusteePlaceholder from "@/assets/trustee-placeholder.jpg";
 
 const About = () => {
+  const [selectedTrustee, setSelectedTrustee] = useState<number | null>(null);
+  
   const trustees = [
-    { name: "Mr. Sunil Lakra", title: "Chairman" },
-    { name: "Mrs. Uma Sengupta", title: "Vice Chairman" },
-    { name: "Mr. Praveen Sharma", title: "Secretary" },
-    { name: "Mr. Akhil Poddar", title: "Treasurer" },
-    { name: "Mr. Uttam Jain", title: "Joint Secretary" },
+    { 
+      name: "Mr. Sunil Lakra", 
+      title: "Chairman",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. With decades of experience in social work and community development, Mr. Lakra brings visionary leadership to Upasana.",
+      journey: "Mr. Lakra has been instrumental in establishing various charitable initiatives across Jharkhand. His commitment to inclusive education stems from his belief that every child deserves equal opportunities to thrive and succeed in life."
+    },
+    { 
+      name: "Mrs. Uma Sengupta", 
+      title: "Vice Chairman",
+      description: "A pioneer in pediatric physiotherapy with over 37 years of experience. Mrs. Sengupta has dedicated her life to early intervention and child development.",
+      journey: "Starting her journey in 1988, Mrs. Sengupta has transformed the landscape of pediatric therapy in Ranchi. Her evidence-based approach and compassionate care have helped hundreds of families navigate their child's developmental journey."
+    },
+    { 
+      name: "Mr. Praveen Sharma", 
+      title: "Secretary",
+      description: "An accomplished professional with a passion for social welfare and organizational excellence. Mr. Sharma ensures smooth operations and strategic planning.",
+      journey: "With a background in management and community service, Mr. Sharma has been actively involved in various NGOs. His expertise in administration and fundraising has been crucial to Upasana's growth and sustainability."
+    },
+    { 
+      name: "Mr. Akhil Poddar", 
+      title: "Treasurer",
+      description: "A financial expert committed to transparency and fiscal responsibility. Mr. Poddar manages Upasana's resources to maximize impact for children and families.",
+      journey: "Mr. Poddar's financial acumen and ethical approach ensure that every resource is utilized effectively. His dedication to accountability has built trust with donors and stakeholders alike."
+    },
+    { 
+      name: "Mr. Uttam Jain", 
+      title: "Joint Secretary",
+      description: "A dedicated social worker with deep roots in community engagement. Mr. Jain supports operational activities and outreach programs.",
+      journey: "Mr. Jain's grassroots experience and networking skills have expanded Upasana's reach. His hands-on approach in program implementation ensures that services reach those who need them most."
+    },
   ];
 
   const milestones = [
@@ -234,18 +264,47 @@ const About = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
             {trustees.map((trustee, index) => (
-              <div
-                key={index}
-                className="bg-card border border-border rounded-2xl p-6 text-center shadow-card hover:shadow-card-hover transition-all duration-300 hover:scale-105 animate-fade-in-up"
-              >
-                <div className="mb-4 mx-auto w-20 h-20 rounded-full bg-gradient-to-br from-primary via-secondary to-yellow flex items-center justify-center text-white text-3xl font-bold shadow-lg">
-                  {trustee.name.charAt(4)}
-                </div>
-                <h3 className="font-bold text-foreground mb-2 text-lg">
-                  {trustee.name}
-                </h3>
-                <p className="text-sm text-muted-foreground font-medium">{trustee.title}</p>
-              </div>
+              <Dialog key={index}>
+                <DialogTrigger asChild>
+                  <div
+                    className="bg-card border border-border rounded-2xl p-6 text-center shadow-card hover:shadow-card-hover transition-all duration-300 hover:scale-105 animate-fade-in-up cursor-pointer"
+                  >
+                    <div className="mb-4 mx-auto w-20 h-20 rounded-full bg-gradient-to-br from-primary via-secondary to-yellow flex items-center justify-center text-white text-3xl font-bold shadow-lg">
+                      {trustee.name.charAt(4)}
+                    </div>
+                    <h3 className="font-bold text-foreground mb-2 text-lg">
+                      {trustee.name}
+                    </h3>
+                    <p className="text-sm text-muted-foreground font-medium">{trustee.title}</p>
+                  </div>
+                </DialogTrigger>
+                <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+                  <DialogHeader>
+                    <DialogTitle className="text-2xl">{trustee.name}</DialogTitle>
+                  </DialogHeader>
+                  <div className="space-y-6">
+                    <div className="flex justify-center">
+                      <img 
+                        src={trusteePlaceholder} 
+                        alt={trustee.name}
+                        className="w-48 h-48 rounded-xl object-cover shadow-lg"
+                      />
+                    </div>
+                    <div>
+                      <p className="text-lg font-semibold text-primary mb-2">{trustee.title}</p>
+                      <p className="text-muted-foreground leading-relaxed mb-4">
+                        {trustee.description}
+                      </p>
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-bold text-foreground mb-3">Their Journey</h4>
+                      <p className="text-muted-foreground leading-relaxed">
+                        {trustee.journey}
+                      </p>
+                    </div>
+                  </div>
+                </DialogContent>
+              </Dialog>
             ))}
           </div>
         </div>

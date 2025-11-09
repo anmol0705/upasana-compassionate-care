@@ -66,7 +66,7 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-[500px] sm:min-h-[600px] md:min-h-[700px] lg:min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[90vh] sm:min-h-screen flex items-center justify-center overflow-hidden pt-20 sm:pt-0">
         <div
           className="absolute inset-0 z-0"
           style={{
@@ -75,22 +75,22 @@ const Home = () => {
             backgroundPosition: "center",
           }}
         />
-        <div className="container mx-auto px-4 sm:px-6 relative z-10 text-center animate-fade-in py-16 sm:py-20">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 sm:mb-6 leading-tight">
+        <div className="container mx-auto px-6 sm:px-8 relative z-10 text-center animate-fade-in py-12 sm:py-20">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 sm:mb-8 leading-tight px-2">
             Empowering Your Child's Unique Journey
           </h1>
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/95 mb-6 sm:mb-8 max-w-3xl mx-auto font-light px-4">
+          <p className="text-lg sm:text-xl md:text-2xl text-white/95 mb-8 sm:mb-10 max-w-3xl mx-auto font-light px-4">
             Expert early intervention and child development for special needs – where every child's potential is nurtured with compassion and science
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-md sm:max-w-none mx-auto px-4">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-md sm:max-w-none mx-auto px-4">
             <Link to="/contact" className="w-full sm:w-auto">
-              <Button variant="pill" size="lg" className="text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 w-full sm:w-auto">
+              <Button variant="pill" size="lg" className="text-lg px-8 py-6 w-full sm:w-auto">
                 Schedule a Consultation
               </Button>
             </Link>
             <a href="tel:7033917890" className="w-full sm:w-auto">
-              <Button variant="pill-outline" size="lg" className="text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 bg-white/10 text-white border-white hover:bg-white hover:text-primary w-full sm:w-auto">
-                <Phone className="h-4 w-4 sm:h-5 sm:w-5" />
+              <Button variant="pill-outline" size="lg" className="text-lg px-8 py-6 bg-white/10 text-white border-white hover:bg-white hover:text-primary w-full sm:w-auto">
+                <Phone className="h-5 w-5" />
                 Call: 7033917890
               </Button>
             </a>
@@ -118,10 +118,10 @@ const Home = () => {
       </section>
 
       {/* Our Services Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-4xl font-bold text-foreground mb-4">
+      <section className="py-12 sm:py-16 md:py-20">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="max-w-3xl mx-auto text-center mb-10 sm:mb-12">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
               A Holistic Approach to Development
             </h2>
           </div>
@@ -137,7 +137,7 @@ const Home = () => {
           </div>
           <div className="text-center">
             <Link to="/services">
-              <Button variant="pill" size="lg">
+              <Button variant="pill" size="lg" className="w-full sm:w-auto">
                 See All Services
                 <ArrowRight className="h-5 w-5" />
               </Button>
@@ -150,11 +150,11 @@ const Home = () => {
       <section className="py-12 sm:py-16 md:py-20 bg-muted">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center max-w-6xl mx-auto">
-            <div className="relative max-w-md mx-auto lg:max-w-none">
+            <div className="relative max-w-sm mx-auto lg:max-w-none">
               <img
                 src={drImage}
                 alt="Dr. Uma Sen Gupta"
-                className="w-full h-auto object-cover rounded-xl shadow-card-hover aspect-[3/4] sm:aspect-[4/5]"
+                className="w-full h-auto object-cover rounded-xl shadow-card-hover aspect-square sm:aspect-[3/4] lg:aspect-[4/5]"
               />
             </div>
             <div className="space-y-4 sm:space-y-6">
