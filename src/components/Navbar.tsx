@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
-import logo from "@/assets/upasana-logo.png";
+import logo from "@/assets/upasana-logo.webp";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
