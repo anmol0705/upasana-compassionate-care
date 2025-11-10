@@ -1,55 +1,22 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { useForm } from "@formspree/react";
 import { toast } from "sonner";
+import { useEffect } from "react";
 
 const Contact = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState({
-    fullName: "",
-    phone: "",
-    email: "",
-    childAge: "",
-    message: "",
-  });
+  const [state, handleSubmit] = useForm("myzlglgk");
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    const form = e.currentTarget;
-    const formDataToSend = new FormData(form);
-
-    try {
-      const response = await fetch(form.action, {
-        method: "POST",
-        body: formDataToSend,
-        headers: {
-          Accept: "application/json",
-        },
-      });
-
-      if (response.ok) {
-        toast.success("Thank you! We'll get back to you soon.");
-        setFormData({
-          fullName: "",
-          phone: "",
-          email: "",
-          childAge: "",
-          message: "",
-        });
-        form.reset();
-      } else {
-        toast.error("Something went wrong. Please try again.");
-      }
-    } catch (error) {
-      toast.error("Unable to send message. Please try again later.");
-    } finally {
-      setIsSubmitting(false);
+  useEffect(() => {
+    if (state.succeeded) {
+      toast.success("Thank you! We'll get back to you soon.");
     }
-  };
+    if (state.errors) {
+      toast.error("Something went wrong. Please try again.");
+    }
+  }, [state.succeeded, state.errors]);
 
   return (
     <div className="min-h-screen pt-20 sm:pt-24 pb-12 sm:pb-16">
@@ -72,12 +39,7 @@ const Contact = () => {
             <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-4 sm:mb-6">
               Send Us a Message
             </h2>
-            <form 
-              onSubmit={handleSubmit} 
-              action="https://formspree.io/f/myzlglgk"
-              method="POST"
-              className="space-y-5"
-            >
+            <form onSubmit={handleSubmit} className="space-y-5">
               <div>
                 <label
                   htmlFor="fullName"
@@ -89,10 +51,6 @@ const Contact = () => {
                   id="fullName"
                   name="fullName"
                   type="text"
-                  value={formData.fullName}
-                  onChange={(e) =>
-                    setFormData({ ...formData, fullName: e.target.value })
-                  }
                   required
                   className="rounded-lg"
                 />
@@ -109,10 +67,6 @@ const Contact = () => {
                   id="phone"
                   name="phone"
                   type="tel"
-                  value={formData.phone}
-                  onChange={(e) =>
-                    setFormData({ ...formData, phone: e.target.value })
-                  }
                   required
                   className="rounded-lg"
                 />
@@ -129,10 +83,6 @@ const Contact = () => {
                   id="email"
                   name="email"
                   type="email"
-                  value={formData.email}
-                  onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
-                  }
                   className="rounded-lg"
                 />
               </div>
@@ -148,10 +98,6 @@ const Contact = () => {
                   id="childAge"
                   name="childAge"
                   type="text"
-                  value={formData.childAge}
-                  onChange={(e) =>
-                    setFormData({ ...formData, childAge: e.target.value })
-                  }
                   className="rounded-lg"
                 />
               </div>
@@ -166,24 +112,20 @@ const Contact = () => {
                 <Textarea
                   id="message"
                   name="message"
-                  value={formData.message}
-                  onChange={(e) =>
-                    setFormData({ ...formData, message: e.target.value })
-                  }
                   required
                   rows={5}
                   className="rounded-lg resize-none"
                 />
               </div>
 
-              <Button 
-                type="submit" 
-                variant="pill" 
-                size="lg" 
+              <Button
+                type="submit"
+                variant="pill"
+                size="lg"
                 className="w-full"
-                disabled={isSubmitting}
+                disabled={state.submitting}
               >
-                {isSubmitting ? "Sending..." : "Send Message"}
+                {state.submitting ? "Sending..." : "Send Message"}
               </Button>
             </form>
           </div>
@@ -200,7 +142,9 @@ const Contact = () => {
                     <MapPin className="h-6 w-6 text-primary" />
                   </div>
                   <div>
-                    <p className="font-semibold text-foreground mb-1">Address</p>
+                    <p className="font-semibold text-foreground mb-1">
+                      Address
+                    </p>
                     <p className="text-muted-foreground">
                       YMCA School Campus, Kantatoli, Ranchi
                     </p>
@@ -255,7 +199,7 @@ const Contact = () => {
             {/* Map */}
             <div className="rounded-xl overflow-hidden shadow-card-hover h-[300px] sm:h-[350px] md:h-[400px]">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3662.8888507598246!2d85.32473931496634!3d23.35457648475754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4e1d8d8d8d8d8%3A0x8d8d8d8d8d8d8d8!2sYMCA%20School%2C%20Kantatoli%2C%20Ranchi!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3662.5!2d85.3479911!3d23.3644669!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4e190ded8871d%3A0xca59b51342c792d7!2sUpasana%20-%20Centre%20for%20Early%20Intervention%20%26%20Child%20Development!5e0!3m2!1sen!2sin!4v1731234567890!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
