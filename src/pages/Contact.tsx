@@ -255,7 +255,7 @@ const Contact = () => {
             {/* Map */}
             <div className="rounded-xl overflow-hidden shadow-card-hover h-[300px] sm:h-[350px] md:h-[400px]">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3662.8888507598246!2d85.32473931496634!3d23.35457648475754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4e1d8d8d8d8d8%3A0x8d8d8d8d8d8d8d8!2sYMCA%20School%2C%20Kantatoli%2C%20Ranchi!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3662.5!2d85.3479911!3d23.3644669!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4e190ded8871d%3A0xca59b51342c792d7!2sUpasana%20-%20Centre%20for%20Early%20Intervention%20%26%20Child%20Development!5e0!3m2!1sen!2sin!4v1731234567890!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
