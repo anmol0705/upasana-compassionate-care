@@ -279,9 +279,11 @@ const About = () => {
                   <div
                     className="bg-card border border-border rounded-2xl p-6 text-center shadow-card hover:shadow-card-hover transition-all duration-300 hover:scale-105 animate-fade-in-up cursor-pointer"
                   >
-                    <div className="mb-4 mx-auto w-20 h-20 rounded-full bg-gradient-to-br from-primary via-secondary to-yellow flex items-center justify-center text-white text-3xl font-bold shadow-lg">
-                      {trustee.name.charAt(4)}
-                    </div>
+                    <img 
+                      src={trustee.image} 
+                      alt={trustee.name}
+                      className="mb-4 mx-auto w-20 h-20 rounded-full object-cover shadow-lg"
+                    />
                     <h3 className="font-bold text-foreground mb-2 text-lg">
                       {trustee.name}
                     </h3>
