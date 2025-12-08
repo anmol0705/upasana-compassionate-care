@@ -1,5 +1,5 @@
 import { Users } from "lucide-react";
-import drImage from "@/assets/dr-uma-sengupta.jpg";
+import drImage from "@/assets/dr-uma-sengupta.webp";
 
 const Team = () => {
   const teamMembers = [
