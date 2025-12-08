@@ -2,6 +2,11 @@ import { CheckCircle2, Target, Eye, Heart, Lightbulb, Users } from "lucide-react
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { useState } from "react";
 import trusteePlaceholder from "@/assets/trustee-placeholder.jpg";
+import sunilImg from "@/assets/sunil-lakra.jpg";
+import umaImg from "@/assets/dr-uma-sengupta.jpg";
+import praveenImg from "@/assets/Praveen-Sharma.png";
+import akhilImg from "@/assets/Akhil-Poddar.jpg";
+import uttamImg from "@/assets/Uttam-Jain.jpg";
 
 const About = () => {
   const [selectedTrustee, setSelectedTrustee] = useState<number | null>(null);
@@ -10,30 +15,35 @@ const About = () => {
     { 
       name: "Mr. Sunil Lakra", 
       title: "Chairman",
+      image: sunilImg,
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. With decades of experience in social work and community development, Mr. Lakra brings visionary leadership to Upasana.",
       journey: "Mr. Lakra has been instrumental in establishing various charitable initiatives across Jharkhand. His commitment to inclusive education stems from his belief that every child deserves equal opportunities to thrive and succeed in life."
     },
     { 
       name: "Mrs. Uma Sengupta", 
       title: "Vice Chairman",
+      image: umaImg,
       description: "A pioneer in pediatric physiotherapy with over 37 years of experience. Mrs. Sengupta has dedicated her life to early intervention and child development.",
       journey: "Starting her journey in 1988, Mrs. Sengupta has transformed the landscape of pediatric therapy in Ranchi. Her evidence-based approach and compassionate care have helped hundreds of families navigate their child's developmental journey."
     },
     { 
       name: "Mr. Praveen Sharma", 
       title: "Secretary",
+      image: praveenImg,
       description: "An accomplished professional with a passion for social welfare and organizational excellence. Mr. Sharma ensures smooth operations and strategic planning.",
       journey: "With a background in management and community service, Mr. Sharma has been actively involved in various NGOs. His expertise in administration and fundraising has been crucial to Upasana's growth and sustainability."
     },
     { 
       name: "Mr. Akhil Poddar", 
       title: "Treasurer",
+      image: akhilImg,
       description: "A financial expert committed to transparency and fiscal responsibility. Mr. Poddar manages Upasana's resources to maximize impact for children and families.",
       journey: "Mr. Poddar's financial acumen and ethical approach ensure that every resource is utilized effectively. His dedication to accountability has built trust with donors and stakeholders alike."
     },
     { 
       name: "Mr. Uttam Jain", 
       title: "Joint Secretary",
+      image: uttamImg,
       description: "A dedicated social worker with deep roots in community engagement. Mr. Jain supports operational activities and outreach programs.",
       journey: "Mr. Jain's grassroots experience and networking skills have expanded Upasana's reach. His hands-on approach in program implementation ensures that services reach those who need them most."
     },
@@ -285,7 +295,7 @@ const About = () => {
                   <div className="space-y-6">
                     <div className="flex justify-center">
                       <img 
-                        src={trusteePlaceholder} 
+                        src={trustee.image ?? trusteePlaceholder} 
                         alt={trustee.name}
                         className="w-48 h-48 rounded-xl object-cover shadow-lg"
                       />
