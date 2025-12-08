@@ -27,25 +27,25 @@ const About = () => {
       journey: "Starting her journey in 1988, Mrs. Sengupta has transformed the landscape of pediatric therapy in Ranchi. Her evidence-based approach and compassionate care have helped hundreds of families navigate their child's developmental journey."
     },
     { 
-      name: "Mr. Praveen Sharma", 
+      name: "CA. Praveen Sharma", 
       title: "Secretary",
       image: praveenImg,
-      description: "An accomplished professional with a passion for social welfare and organizational excellence. Mr. Sharma ensures smooth operations and strategic planning.",
-      journey: "With a background in management and community service, Mr. Sharma has been actively involved in various NGOs. His expertise in administration and fundraising has been crucial to Upasana's growth and sustainability."
+      description: "A distinguished Chartered Accountant guiding the trust with over two decades of financial wisdom and a heart dedicated to social service and transparency.",
+      journey: "With a robust career as a partner at M/s. Praveen B. Sharma & Associates and former Chairman of ICAI Ranchi, Praveen blends professional rigour with compassion. He has been a tireless advocate for education and health through the Red Cross and Sewa Bharti, ensuring Upasana is built on a foundation of integrity and care."
     },
     { 
-      name: "Mr. Akhil Poddar", 
+      name: "CA. Akhil Poddar", 
       title: "Treasurer",
       image: akhilImg,
-      description: "A financial expert committed to transparency and fiscal responsibility. Mr. Poddar manages Upasana's resources to maximize impact for children and families.",
-      journey: "Mr. Poddar's financial acumen and ethical approach ensure that every resource is utilized effectively. His dedication to accountability has built trust with donors and stakeholders alike."
+      description: "A seasoned Senior Partner at Jain Poddar & Co. committed to fiscal integrity. Mr. Poddar applies over two decades of financial expertise to ensure Upasana's resources are managed with transparency.",
+      journey: "Practicing since 2002 with qualifications including FCA, CS, and LLB, he brings deep expertise in audit, taxation, and investment. His meticulous financial stewardship ensures the trust operates on a solid foundation, building lasting confidence with our donors."
     },
     { 
-      name: "Mr. Uttam Jain", 
+      name: "CA. Uttam Jain", 
       title: "Joint Secretary",
       image: uttamImg,
-      description: "A dedicated social worker with deep roots in community engagement. Mr. Jain supports operational activities and outreach programs.",
-      journey: "Mr. Jain's grassroots experience and networking skills have expanded Upasana's reach. His hands-on approach in program implementation ensures that services reach those who need them most."
+      description: "A Senior Partner at Jain Poddar & Co. with a history of academic excellence as an All-India Rank holder. Mr. Jain brings top-tier expertise in finance, taxation, and law to streamline Upasana's operations.",
+      journey: "Holding FCA, CS, and LLB qualifications, he balances professional success with deep community engagement. Actively serving as a Trustee for the Aarohan Educational & Welfare Trust and the Oswal Sangh, his leadership ensures our programs are impactful and well-governed."
     },
   ];
 
