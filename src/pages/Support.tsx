@@ -62,7 +62,7 @@ const Support = () => {
                     Account Name
                   </p>
                   <p className="text-sm sm:text-base md:text-lg font-semibold text-foreground break-words">
-                    UPASANA CHARITABLE & WELFARE TRUST
+                    Upasana Charitable and Welfare Trust
                   </p>
                 </div>
               </div>
@@ -76,7 +76,7 @@ const Support = () => {
                     Account Number
                   </p>
                   <p className="text-sm sm:text-base md:text-lg font-semibold text-foreground font-mono break-all">
-                    [Your Account Number]
+                    459920110000674
                   </p>
                 </div>
               </div>
@@ -90,7 +90,7 @@ const Support = () => {
                     IFSC Code
                   </p>
                   <p className="text-sm sm:text-base md:text-lg font-semibold text-foreground font-mono break-all">
-                    [Your IFSC Code]
+                     BKID0004599
                   </p>
                 </div>
               </div>
@@ -104,7 +104,7 @@ const Support = () => {
                     Bank Name
                   </p>
                   <p className="text-sm sm:text-base md:text-lg font-semibold text-foreground break-words">
-                    [Your Bank Name]
+                    Bank of India
                   </p>
                 </div>
               </div>
@@ -118,7 +118,7 @@ const Support = () => {
                     Branch Address
                   </p>
                   <p className="text-sm sm:text-base md:text-lg font-semibold text-foreground break-words">
-                    [Your Branch Address]
+                    Kantatoli Branch 
                   </p>
                 </div>
               </div>

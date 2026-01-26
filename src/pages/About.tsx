@@ -16,8 +16,8 @@ const About = () => {
       name: "Mr. Sunil Lakra", 
       title: "Chairman",
       image: sunilImg,
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. With decades of experience in social work and community development, Mr. Lakra brings visionary leadership to Upasana.",
-      journey: "Mr. Lakra has been instrumental in establishing various charitable initiatives across Jharkhand. His commitment to inclusive education stems from his belief that every child deserves equal opportunities to thrive and succeed in life."
+      description: "A seasoned leader with over three decades of managerial experience at Bank of India, bringing administrative expertise and a deep commitment to social welfare to his role as Chairman.",
+      journey: "Mr. Lakra served as a Manager at Bank of India for more than 30 years. A stalwart in organizational leadership, he represented the Bank of India Officers Association as National Vice President and held President and Secretary positions within the All India Bank Officers Association at both state and national levels. He also served as a Board member of the All India Bank of India SC/ST Officers Association. Beyond banking, he actively champions social upliftment and sports activities."
     },
     { 
       name: "Mrs. Uma Sengupta", 
@@ -30,8 +30,8 @@ const About = () => {
       name: "CA. Praveen Sharma", 
       title: "Secretary",
       image: praveenImg,
-      description: "A distinguished Chartered Accountant guiding the trust with over two decades of financial wisdom and a heart dedicated to social service and transparency.",
-      journey: "With a robust career as a partner at M/s. Praveen B. Sharma & Associates and former Chairman of ICAI Ranchi, Praveen blends professional rigour with compassion. He has been a tireless advocate for education and health through the Red Cross and Sewa Bharti, ensuring Upasana is built on a foundation of integrity and care."
+      description: "A distinguished Chartered Accountant and Lawyer guiding the trust with over two decades of financial and legal wisdom, dedicated to social service and transparency.",
+      journey: "With a robust career as a partner at M/s. Praveen B. Sharma & Associates and former Chairman of ICAI Ranchi, Praveen blends professional rigour with compassion. His leadership extends to active roles in FJCCI and Marwari Yuva Manch. As a tireless advocate for education and health through the Red Cross and Sewa Bharti, he ensures Upasana is built on a foundation of integrity and care."
     },
     { 
       name: "CA. Akhil Poddar", 
