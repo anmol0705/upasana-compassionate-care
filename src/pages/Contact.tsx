@@ -7,7 +7,7 @@ import { toast } from "sonner";
 import { useEffect } from "react";
 
 const Contact = () => {
-  const [state, handleSubmit] = useForm("myzlglgk");
+  const [state, handleSubmit] = useForm("xjgwyywy");
 
   useEffect(() => {
     if (state.succeeded) {
