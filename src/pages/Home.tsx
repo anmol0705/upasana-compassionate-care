@@ -3,6 +3,14 @@ import { Button } from "@/components/ui/button";
 import ServiceCard from "@/components/ServiceCard";
 import ConditionTag from "@/components/ConditionTag";
 import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+
+import {
   Brain,
   Heart,
   Users,
@@ -178,7 +186,33 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Testimonial Section */}
+      {/* YouTube Video Section */}
+      <section className="py-12 sm:py-16 md:py-20">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="max-w-4xl mx-auto text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+              See Us in Action
+            </h2>
+            <p className="text-base sm:text-lg text-muted-foreground">
+              Watch how we support children on their developmental journey
+            </p>
+          </div>
+          <div className="max-w-4xl mx-auto">
+            <div className="relative w-full overflow-hidden rounded-xl shadow-card-hover" style={{ paddingBottom: '56.25%' }}>
+              <iframe
+                className="absolute top-0 left-0 w-full h-full"
+                src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+                title="Upasana Centre Video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* Testimonial Section
       <section className="py-12 sm:py-16 md:py-20">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
@@ -197,7 +231,51 @@ const Home = () => {
             </div>
           </div>
         </div>
+      </section> */}
+
+      {/* Testimonial Carousel Section */}
+      <section className="py-12 sm:py-16 md:py-20">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="max-w-4xl mx-auto">
+            <Carousel className="w-full">
+              <CarouselContent>
+                {[
+                  {
+                    quote: "A much needed Centre to provide therapy with personalized care and love. Great initiative that truly makes a difference in the lives of special children and their families.",
+                    author: "Praveen Sharma",
+                    role: "Parent"
+                  },
+                  {
+                    quote: "Add your second review here.",
+                    author: "Reviewer Name",
+                    role: "Parent"
+                  },
+                  {
+                    quote: "Add your third review here.",
+                    author: "Reviewer Name",
+                    role: "Parent"
+                  },
+                ].map((testimonial, index) => (
+                  <CarouselItem key={index}>
+                    <div className="bg-card border border-border rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-12 shadow-card-hover text-center">
+                      <div className="text-4xl sm:text-5xl md:text-6xl text-primary mb-2 sm:mb-4">"</div>
+                      <blockquote className="text-lg sm:text-xl md:text-2xl text-foreground font-light italic mb-6 sm:mb-8 leading-relaxed">
+                        {testimonial.quote}
+                      </blockquote>
+                      <p className="text-sm sm:text-base text-muted-foreground font-semibold">
+                        – {testimonial.author}, {testimonial.role}
+                      </p>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="hidden sm:flex -left-4 md:-left-12" />
+              <CarouselNext className="hidden sm:flex -right-4 md:-right-12" />
+            </Carousel>
+          </div>
+        </div>
       </section>
+
 
       {/* CTA Section */}
       <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-primary/10 via-secondary/10 to-yellow/10">
