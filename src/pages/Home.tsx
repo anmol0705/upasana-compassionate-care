@@ -167,12 +167,12 @@ const Home = () => {
                 expertise in early intervention have shaped child development
                 services in Ranchi.
               </p>
-              <Link to="/team">
+              {/* <Link to="/team">
                 <Button variant="pill" size="lg" className="w-full sm:w-auto">
                   Meet Our Team
                   <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
                 </Button>
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>
