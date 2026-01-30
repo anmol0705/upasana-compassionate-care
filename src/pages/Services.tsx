@@ -62,11 +62,11 @@ const Services = () => {
       <div className="container mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-10 sm:mb-12 md:mb-16">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-3 sm:mb-4">
-            Our Therapeutic Services
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-3 sm:mb-4 font-serif">
+            How We Care for Your Child
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground px-4">
-            Comprehensive, evidence-based therapies tailored to your child's needs
+            Comprehensive, evidence-based therapies delivered with warmth and expertise
           </p>
         </div>
 
@@ -77,9 +77,9 @@ const Services = () => {
               <AccordionItem
                 key={service.id}
                 value={service.id}
-                className="bg-card border border-border rounded-xl px-4 sm:px-6 shadow-card hover:shadow-card-hover transition-all duration-300"
+                className="bg-card border border-border rounded-2xl px-4 sm:px-6 shadow-card hover:shadow-card-hover transition-all duration-400"
               >
-                <AccordionTrigger className="text-left text-base sm:text-lg md:text-xl font-semibold text-foreground hover:text-primary py-4 sm:py-6">
+                <AccordionTrigger className="text-left text-base sm:text-lg md:text-xl font-semibold text-foreground hover:text-primary py-4 sm:py-6 font-serif">
                   {service.title}
                 </AccordionTrigger>
                 <AccordionContent className="text-sm sm:text-base text-muted-foreground leading-relaxed pb-4 sm:pb-6">

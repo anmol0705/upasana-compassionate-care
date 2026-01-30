@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Heart } from "lucide-react";
 import logo from "@/assets/upasana-logo.webp";
 
 const Navbar = () => {
@@ -30,10 +30,10 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
         isScrolled
-          ? "bg-background shadow-lg"
-          : "bg-background/95 backdrop-blur-sm shadow-md"
+          ? "bg-background shadow-card-hover"
+          : "bg-background/95 backdrop-blur-sm shadow-card"
       }`}
     >
       <div className="container mx-auto px-4">
@@ -43,12 +43,12 @@ const Navbar = () => {
             <img
               src={logo}
               alt="Upasana Logo"
-              className="h-12 w-12 transition-transform duration-300 group-hover:scale-110"
+              className="h-12 w-12 transition-transform duration-400 ease-in-out group-hover:scale-105"
             />
             <div className="flex flex-col">
-              <span className="text-xl font-bold text-foreground">Upasana</span>
+              <span className="text-xl font-bold text-foreground font-serif">Upasana</span>
               <span className="text-xs text-muted-foreground hidden md:block">
-                Early Intervention Centre
+                Nurturing Potential, Building Futures
               </span>
             </div>
           </Link>
@@ -59,7 +59,7 @@ const Navbar = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 ${
+                className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                   location.pathname === link.path
                     ? "text-primary bg-primary/10"
                     : "text-foreground hover:text-primary hover:bg-primary/5"
@@ -72,17 +72,17 @@ const Navbar = () => {
 
           {/* CTA Button - Desktop */}
           <div className="hidden lg:flex items-center gap-3">
-            <Link to="/contact">
-              <Button variant="pill" size="sm" className="gap-2">
-                <Phone className="h-4 w-4" />
-                Get Started
+            <Link to="/support">
+              <Button variant="warm" size="sm" className="gap-2">
+                <Heart className="h-4 w-4" />
+                Support Our Mission
               </Button>
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2 rounded-md hover:bg-accent transition-colors"
+            className="lg:hidden p-2 rounded-lg hover:bg-accent transition-colors duration-300"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -96,14 +96,14 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden py-4 animate-fade-in-up">
+          <div className="lg:hidden py-4 animate-fade-in">
             <div className="flex flex-col space-y-2">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`px-4 py-3 rounded-md text-sm font-medium transition-colors ${
+                  className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors duration-300 ${
                     location.pathname === link.path
                       ? "text-primary bg-primary/10"
                       : "text-foreground hover:text-primary hover:bg-primary/5"
@@ -113,10 +113,10 @@ const Navbar = () => {
                 </Link>
               ))}
               <div className="flex flex-col gap-2 pt-4 px-4">
-                <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Button variant="pill" size="default" className="w-full gap-2">
-                    <Phone className="h-4 w-4" />
-                    Get Started
+                <Link to="/support" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Button variant="warm" size="default" className="w-full gap-2">
+                    <Heart className="h-4 w-4" />
+                    Support Our Mission
                   </Button>
                 </Link>
               </div>
