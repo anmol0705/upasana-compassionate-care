@@ -5,17 +5,19 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-semibold ring-offset-background transition-all duration-400 ease-in-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-md hover:shadow-lg",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-md hover:shadow-lg",
-        outline: "border-2 border-primary bg-transparent text-primary hover:bg-primary hover:text-primary-foreground",
+        default: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-card hover:shadow-warm hover:-translate-y-0.5",
+        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-card hover:shadow-card-hover hover:-translate-y-0.5",
+        outline: "border-2 border-primary bg-transparent text-primary hover:bg-primary hover:text-primary-foreground hover:-translate-y-0.5",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        pill: "rounded-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-md hover:shadow-lg hover:scale-105",
-        "pill-outline": "rounded-full border-2 border-primary bg-transparent text-primary hover:bg-primary hover:text-primary-foreground hover:scale-105",
+        pill: "rounded-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-card hover:shadow-warm hover:-translate-y-0.5",
+        "pill-outline": "rounded-full border-2 border-primary bg-transparent text-primary hover:bg-primary hover:text-primary-foreground hover:-translate-y-0.5",
+        warm: "rounded-full bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-card hover:shadow-card-hover hover:-translate-y-0.5",
+        "warm-outline": "rounded-full border-2 border-secondary bg-transparent text-secondary hover:bg-secondary hover:text-secondary-foreground hover:-translate-y-0.5",
       },
       size: {
         default: "h-11 px-6 py-2",

@@ -1,4 +1,4 @@
-import { CheckCircle2, Target, Eye, Heart, Lightbulb, Users } from "lucide-react";
+import { CheckCircle2, Target, Eye, Heart, Lightbulb, Users, Sparkles, Shield } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { useState } from "react";
 import trusteePlaceholder from "@/assets/trustee-placeholder.jpg";
@@ -7,6 +7,7 @@ import umaImg from "@/assets/dr-uma-sengupta.jpg";
 import praveenImg from "@/assets/Praveen-Sharma.png";
 import akhilImg from "@/assets/Akhil-Poddar.jpg";
 import uttamImg from "@/assets/Uttam-Jain.jpg";
+import CharitableBadge from "@/components/CharitableBadge";
 
 const About = () => {
   const [selectedTrustee, setSelectedTrustee] = useState<number | null>(null);
@@ -70,12 +71,20 @@ const About = () => {
     "Regular progress monitoring and program adjustments",
   ];
 
+  const coreValues = [
+    { icon: Heart, title: "Compassion", description: "Every child is treated with love and understanding" },
+    { icon: Users, title: "Inclusion", description: "We embrace diversity and celebrate differences" },
+    { icon: Sparkles, title: "Excellence", description: "Evidence-based practices delivered with expertise" },
+    { icon: Shield, title: "Empowerment", description: "Building confidence and independence in every child" },
+  ];
+
   return (
     <div className="min-h-screen pt-24 pb-16">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="max-w-4xl mx-auto text-center mb-20 animate-fade-in-up">
-          <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6">
+        <div className="max-w-4xl mx-auto text-center mb-16 animate-fade-in-up">
+          <CharitableBadge className="mb-6" />
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 font-serif">
             About Upasana
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
@@ -85,11 +94,11 @@ const About = () => {
 
         {/* Introduction */}
         <div className="max-w-5xl mx-auto mb-20">
-          <div className="bg-gradient-to-br from-primary/5 via-secondary/5 to-yellow/5 border border-border rounded-2xl p-8 md:p-12 shadow-card hover:shadow-card-hover transition-all duration-300 animate-fade-in-up">
+          <div className="bg-gradient-to-br from-primary/5 via-secondary/5 to-yellow/5 border border-border rounded-2xl p-8 md:p-12 shadow-card hover:shadow-card-hover transition-all duration-400 animate-fade-in-up">
             <div className="flex items-start gap-4 mb-6">
               <Heart className="h-12 w-12 text-primary flex-shrink-0" />
               <div>
-                <h2 className="text-3xl font-bold text-foreground mb-4">
+                <h2 className="text-3xl font-bold text-foreground mb-4 font-serif">
                   Who We Are
                 </h2>
                 <p className="text-muted-foreground leading-relaxed mb-4">
@@ -106,16 +115,39 @@ const About = () => {
           </div>
         </div>
 
+        {/* Core Values */}
+        <div className="max-w-6xl mx-auto mb-20">
+          <div className="text-center mb-12 animate-fade-in-up">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 font-serif">
+              Our Core Values
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              The principles that guide everything we do
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {coreValues.map((value, index) => (
+              <div key={index} className="bg-card border border-border rounded-2xl p-6 text-center shadow-card hover:shadow-card-hover transition-all duration-400 hover:-translate-y-1 animate-fade-in-up">
+                <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                  <value.icon className="h-7 w-7 text-primary" />
+                </div>
+                <h3 className="text-lg font-bold text-foreground mb-2 font-serif">{value.title}</h3>
+                <p className="text-sm text-muted-foreground">{value.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Mission, Vision & Goal */}
         <div className="max-w-6xl mx-auto mb-20">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Vision */}
-            <div className="bg-card border border-border rounded-2xl p-8 shadow-card hover:shadow-card-hover transition-all duration-300 animate-fade-in-up">
+            <div className="bg-card border border-border rounded-2xl p-8 shadow-card hover:shadow-card-hover transition-all duration-400 animate-fade-in-up">
               <div className="flex items-center gap-3 mb-6">
-                <div className="p-3 rounded-full bg-primary/10">
+                <div className="p-3 rounded-2xl bg-primary/10">
                   <Eye className="h-8 w-8 text-primary" />
                 </div>
-                <h2 className="text-2xl font-bold text-foreground">Our Vision</h2>
+                <h2 className="text-2xl font-bold text-foreground font-serif">Our Vision</h2>
               </div>
               <p className="text-muted-foreground leading-relaxed">
                 Our vision is to create an inclusive society where every impaired child has equal access to quality education, empowering them to reach their full potential and lead fulfilling lives. We strive to foster an environment that embraces diversity, ensuring that all children, regardless of their impairments, receive a high-quality education tailored to their unique needs.
@@ -123,12 +155,12 @@ const About = () => {
             </div>
 
             {/* Mission */}
-            <div className="bg-card border border-border rounded-2xl p-8 shadow-card hover:shadow-card-hover transition-all duration-300 animate-fade-in-up">
+            <div className="bg-card border border-border rounded-2xl p-8 shadow-card hover:shadow-card-hover transition-all duration-400 animate-fade-in-up">
               <div className="flex items-center gap-3 mb-6">
-                <div className="p-3 rounded-full bg-secondary/10">
+                <div className="p-3 rounded-2xl bg-secondary/10">
                   <Target className="h-8 w-8 text-secondary" />
                 </div>
-                <h2 className="text-2xl font-bold text-foreground">Our Mission</h2>
+                <h2 className="text-2xl font-bold text-foreground font-serif">Our Mission</h2>
               </div>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 Education is important for everyone, regardless of their background or circumstances. It is the key to success in life, helping us:
@@ -154,12 +186,12 @@ const About = () => {
             </div>
 
             {/* Goal */}
-            <div className="bg-card border border-border rounded-2xl p-8 shadow-card hover:shadow-card-hover transition-all duration-300 animate-fade-in-up">
+            <div className="bg-card border border-border rounded-2xl p-8 shadow-card hover:shadow-card-hover transition-all duration-400 animate-fade-in-up">
               <div className="flex items-center gap-3 mb-6">
-                <div className="p-3 rounded-full bg-yellow/10">
-                  <Lightbulb className="h-8 w-8 text-yellow" />
+                <div className="p-3 rounded-2xl bg-yellow/10">
+                  <Lightbulb className="h-8 w-8 text-secondary" />
                 </div>
-                <h2 className="text-2xl font-bold text-foreground">Our Goal</h2>
+                <h2 className="text-2xl font-bold text-foreground font-serif">Our Goal</h2>
               </div>
               <p className="text-muted-foreground leading-relaxed">
                 Our goal is to equip children with the knowledge, values, and social skills necessary to thrive academically, emotionally, and socially. We aspire to help them become confident, independent individuals who can contribute to society. Through our comprehensive educational programs, we breakdown barriers, challenge stereotypes, and create a society that recognizes and embraces the potential of every impaired child.
@@ -171,7 +203,7 @@ const About = () => {
         {/* Methodology Section */}
         <div className="max-w-6xl mx-auto mb-20">
           <div className="text-center mb-12 animate-fade-in-up">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 font-serif">
               Our Methodology
             </h2>
             <p className="text-lg text-muted-foreground">
@@ -181,9 +213,9 @@ const About = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
             {/* Early Intervention */}
-            <div className="bg-card border border-border rounded-2xl p-8 shadow-card hover:shadow-card-hover transition-all duration-300 animate-fade-in-up">
-              <h3 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
-                <div className="p-2 rounded-lg bg-primary/10">
+            <div className="bg-card border border-border rounded-2xl p-8 shadow-card hover:shadow-card-hover transition-all duration-400 animate-fade-in-up">
+              <h3 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3 font-serif">
+                <div className="p-2 rounded-xl bg-primary/10">
                   <CheckCircle2 className="h-6 w-6 text-primary" />
                 </div>
                 Early Intervention
@@ -205,9 +237,9 @@ const About = () => {
             </div>
 
             {/* After Identification */}
-            <div className="bg-card border border-border rounded-2xl p-8 shadow-card hover:shadow-card-hover transition-all duration-300 animate-fade-in-up">
-              <h3 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
-                <div className="p-2 rounded-lg bg-secondary/10">
+            <div className="bg-card border border-border rounded-2xl p-8 shadow-card hover:shadow-card-hover transition-all duration-400 animate-fade-in-up">
+              <h3 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3 font-serif">
+                <div className="p-2 rounded-xl bg-secondary/10">
                   <Target className="h-6 w-6 text-secondary" />
                 </div>
                 After Identification
@@ -233,7 +265,7 @@ const About = () => {
         {/* Timeline / Milestones */}
         <div className="max-w-5xl mx-auto mb-20">
           <div className="text-center mb-12 animate-fade-in-up">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 font-serif">
               Our Journey
             </h2>
             <p className="text-lg text-muted-foreground">
@@ -249,7 +281,7 @@ const About = () => {
                   <div className="absolute left-4 top-0 w-9 h-9 rounded-full bg-background border-4 border-primary flex items-center justify-center">
                     <div className="w-3 h-3 rounded-full bg-primary"></div>
                   </div>
-                  <div className="bg-card border border-border rounded-xl p-6 shadow-card hover:shadow-card-hover transition-all duration-300">
+                  <div className="bg-card border border-border rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-all duration-400">
                     <div className="text-sm font-bold text-primary mb-2">
                       {milestone.year}
                     </div>
@@ -264,7 +296,7 @@ const About = () => {
         {/* Board of Trustees */}
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12 animate-fade-in-up">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 font-serif">
               Our Board of Trustees
             </h2>
             <p className="text-lg text-muted-foreground">
@@ -277,14 +309,14 @@ const About = () => {
               <Dialog key={index}>
                 <DialogTrigger asChild>
                   <div
-                    className="bg-card border border-border rounded-2xl p-6 text-center shadow-card hover:shadow-card-hover transition-all duration-300 hover:scale-105 animate-fade-in-up cursor-pointer"
+                    className="bg-card border border-border rounded-2xl p-6 text-center shadow-card hover:shadow-card-hover transition-all duration-400 hover:-translate-y-1 animate-fade-in-up cursor-pointer"
                   >
                     <img 
                       src={trustee.image} 
                       alt={trustee.name}
-                      className="mb-4 mx-auto w-20 h-20 rounded-full object-cover shadow-lg"
+                      className="mb-4 mx-auto w-20 h-20 rounded-full object-cover shadow-card"
                     />
-                    <h3 className="font-bold text-foreground mb-2 text-lg">
+                    <h3 className="font-bold text-foreground mb-2 text-lg font-serif">
                       {trustee.name}
                     </h3>
                     <p className="text-sm text-muted-foreground font-medium">{trustee.title}</p>
@@ -292,14 +324,14 @@ const About = () => {
                 </DialogTrigger>
                 <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
                   <DialogHeader>
-                    <DialogTitle className="text-2xl">{trustee.name}</DialogTitle>
+                    <DialogTitle className="text-2xl font-serif">{trustee.name}</DialogTitle>
                   </DialogHeader>
                   <div className="space-y-6">
                     <div className="flex justify-center">
                       <img 
                         src={trustee.image ?? trusteePlaceholder} 
                         alt={trustee.name}
-                        className="w-48 h-48 rounded-xl object-cover shadow-lg"
+                        className="w-48 h-48 rounded-2xl object-cover shadow-card"
                       />
                     </div>
                     <div>
@@ -309,7 +341,7 @@ const About = () => {
                       </p>
                     </div>
                     <div>
-                      <h4 className="text-lg font-bold text-foreground mb-3">Their Journey</h4>
+                      <h4 className="text-lg font-bold text-foreground mb-3 font-serif">Their Journey</h4>
                       <p className="text-muted-foreground leading-relaxed">
                         {trustee.journey}
                       </p>

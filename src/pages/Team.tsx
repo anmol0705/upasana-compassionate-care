@@ -40,19 +40,19 @@ const Team = () => {
       <div className="container mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-3 sm:mb-4">
-            Meet Our Expert Team
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-3 sm:mb-4 font-serif">
+            Meet Our Caring Team
           </h1>
           <p className="text-lg sm:text-xl text-muted-foreground">
-            Compassionate professionals dedicated to your child's development
+            Compassionate professionals dedicated to nurturing your child's potential
           </p>
         </div>
 
         {/* Lead Therapist Profile */}
-        <section className="mb-12 sm:mb-16 md:mb-20 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-12">
+        <section className="mb-12 sm:mb-16 md:mb-20 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl p-6 sm:p-8 md:p-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center max-w-6xl mx-auto">
             <div className="order-2 lg:order-1 space-y-4 sm:space-y-6">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground font-serif">
                 Dr. Uma Sen Gupta (P.T)
               </h2>
               <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-primary">
@@ -82,7 +82,7 @@ const Team = () => {
                 <img
                   src={drImage}
                   alt="Dr. Uma Sen Gupta"
-                  className="w-full h-auto object-cover rounded-xl shadow-card-hover aspect-[3/4] sm:aspect-[4/5]"
+                  className="w-full h-auto object-cover rounded-2xl shadow-card-hover aspect-[3/4] sm:aspect-[4/5]"
                 />
               </div>
             </div>
@@ -92,7 +92,7 @@ const Team = () => {
         {/* Our Therapists Section */}
         <section>
           <div className="text-center mb-8 sm:mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4 font-serif">
               Our Dedicated Professionals
             </h2>
             <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto px-4">
@@ -106,13 +106,13 @@ const Team = () => {
             {teamMembers.map((member, index) => (
               <div
                 key={index}
-                className="bg-card border border-border rounded-xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 hover:scale-105"
+                className="bg-card border border-border rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-400 hover:-translate-y-1"
               >
                 <div className="aspect-square bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center">
                   <Users className="h-24 w-24 text-primary/40" />
                 </div>
                 <div className="p-6 text-center">
-                  <h3 className="text-lg font-semibold text-foreground mb-1">
+                  <h3 className="text-lg font-semibold text-foreground mb-1 font-serif">
                     {member.name}
                   </h3>
                   <p className="text-sm text-muted-foreground">{member.title}</p>
