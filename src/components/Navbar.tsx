@@ -13,56 +13,63 @@ const Navbar = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
+
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "About Us", path: "/about" },
-    { name: "Our Team", path: "/team" },
-    { name: "Our Services", path: "/services" },
-    { name: "Conditions We Support", path: "/conditions" },
-    { name: "Support Us", path: "/support" },
-    { name: "Contact Us", path: "/contact" },
+    { name: "About", path: "/about" },
+    { name: "Team", path: "/team" },
+    { name: "Services", path: "/services" },
+    { name: "Conditions", path: "/conditions" },
+    { name: "Events", path: "/events" },
+    { name: "Support", path: "/support" },
+    { name: "Contact", path: "/contact" },
   ];
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-background shadow-card-hover"
+          ? "bg-background/98 shadow-card-hover backdrop-blur-sm"
           : "bg-background/95 backdrop-blur-sm shadow-card"
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16 lg:h-[68px]">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
+          <Link to="/" className="flex items-center gap-2.5 group flex-shrink-0">
             <img
               src={logo}
               alt="Upasana Logo"
-              className="h-12 w-12 transition-transform duration-400 ease-in-out group-hover:scale-105"
+              className="h-9 w-9 lg:h-10 lg:w-10 transition-transform duration-300 group-hover:scale-105"
             />
             <div className="flex flex-col">
-              <span className="text-xl font-bold text-foreground font-serif">Upasana</span>
-              <span className="text-xs text-muted-foreground hidden md:block">
+              <span className="text-base lg:text-lg font-bold text-foreground font-serif leading-tight">
+                Upasana
+              </span>
+              <span className="text-[10px] lg:text-xs text-muted-foreground hidden sm:block leading-tight">
                 Nurturing Potential, Building Futures
               </span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-0.5 xl:gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                className={`px-2.5 xl:px-3 py-1.5 rounded-md text-[13px] font-medium transition-all duration-200 whitespace-nowrap ${
                   location.pathname === link.path
                     ? "text-primary bg-primary/10"
-                    : "text-foreground hover:text-primary hover:bg-primary/5"
+                    : "text-foreground/80 hover:text-primary hover:bg-primary/5"
                 }`}
               >
                 {link.name}
@@ -71,39 +78,38 @@ const Navbar = () => {
           </div>
 
           {/* CTA Button - Desktop */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden lg:flex items-center flex-shrink-0">
             <Link to="/support">
-              <Button variant="warm" size="sm" className="gap-2">
-                <Heart className="h-4 w-4" />
-                Support Our Mission
+              <Button variant="warm" size="sm" className="gap-1.5 text-xs h-8 px-3">
+                <Heart className="h-3.5 w-3.5" />
+                Support Us
               </Button>
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2 rounded-lg hover:bg-accent transition-colors duration-300"
+            className="lg:hidden p-2 rounded-lg hover:bg-accent transition-colors duration-200"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
-              <X className="h-6 w-6" />
+              <X className="h-5 w-5" />
             ) : (
-              <Menu className="h-6 w-6" />
+              <Menu className="h-5 w-5" />
             )}
           </button>
         </div>
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden py-4 animate-fade-in">
-            <div className="flex flex-col space-y-2">
+          <div className="lg:hidden py-3 pb-4 animate-fade-in border-t border-border/50">
+            <div className="flex flex-col space-y-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors duration-300 ${
+                  className={`px-4 py-2.5 rounded-lg text-sm font-medium transition-colors duration-200 ${
                     location.pathname === link.path
                       ? "text-primary bg-primary/10"
                       : "text-foreground hover:text-primary hover:bg-primary/5"
@@ -112,8 +118,8 @@ const Navbar = () => {
                   {link.name}
                 </Link>
               ))}
-              <div className="flex flex-col gap-2 pt-4 px-4">
-                <Link to="/support" onClick={() => setIsMobileMenuOpen(false)}>
+              <div className="pt-3 px-4">
+                <Link to="/support">
                   <Button variant="warm" size="default" className="w-full gap-2">
                     <Heart className="h-4 w-4" />
                     Support Our Mission

@@ -6,10 +6,10 @@ interface CharitableBadgeProps {
   className?: string;
 }
 
-const CharitableBadge = ({ 
-  variant = "default", 
+const CharitableBadge = ({
+  variant = "default",
   showIcon = true,
-  className = "" 
+  className = ""
 }: CharitableBadgeProps) => {
   const variantClasses = {
     default: "bg-primary/10 text-primary border-primary/20",
@@ -19,9 +19,11 @@ const CharitableBadge = ({
 
   return (
     <span
-      className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold border backdrop-blur-sm ${variantClasses[variant]} ${className}`}
+      className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-semibold border backdrop-blur-sm transition-all duration-300 hover:shadow-md ${variantClasses[variant]} ${className}`}
     >
-      {showIcon && <Heart className="h-3.5 w-3.5" />}
+      {showIcon && (
+        <Heart className="h-3.5 w-3.5 animate-heartbeat" />
+      )}
       Registered Charitable Trust
     </span>
   );

@@ -14,6 +14,7 @@ const About = lazy(() => import("./pages/About"));
 const Team = lazy(() => import("./pages/Team"));
 const Services = lazy(() => import("./pages/Services"));
 const Conditions = lazy(() => import("./pages/Conditions"));
+const Events = lazy(() => import("./pages/Events"));
 const Support = lazy(() => import("./pages/Support"));
 const Contact = lazy(() => import("./pages/Contact"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -37,6 +38,7 @@ const App = () => (
                 <Route path="/team" element={<Team />} />
                 <Route path="/services" element={<Services />} />
                 <Route path="/conditions" element={<Conditions />} />
+                <Route path="/events" element={<Events />} />
                 <Route path="/support" element={<Support />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="*" element={<NotFound />} />

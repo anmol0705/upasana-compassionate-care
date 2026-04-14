@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Send, CheckCircle2 } from "lucide-react";
 import { useForm } from "@formspree/react";
 import { toast } from "sonner";
 import { useEffect } from "react";
@@ -19,174 +19,222 @@ const Contact = () => {
   }, [state.succeeded, state.errors]);
 
   return (
-    <div className="min-h-screen pt-20 sm:pt-24 pb-12 sm:pb-16">
+    <div className="min-h-screen pt-20 pb-12 sm:pb-16">
       <div className="container mx-auto px-4 sm:px-6">
-        {/* Header */}
-        <div className="max-w-3xl mx-auto text-center mb-10 sm:mb-12 md:mb-16">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-3 sm:mb-4 font-serif">
+        {/* Hero Header */}
+        <div className="max-w-3xl mx-auto text-center mb-10 sm:mb-12 md:mb-16 animate-fade-in-up">
+          <p className="text-primary font-semibold text-sm sm:text-base mb-3 tracking-wide uppercase">
+            Reach Out to Us
+          </p>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-3 sm:mb-4 font-serif">
             Let's Connect
           </h1>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground px-4">
-            We're here to support your family. Reach out to learn how we can help your child thrive.
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground px-4 max-w-2xl mx-auto leading-relaxed">
+            We're here to support your family. Reach out to learn how we can
+            help your child thrive and reach their full potential.
           </p>
         </div>
 
         {/* Contact Form & Info */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto">
           {/* Contact Form */}
-          <div className="bg-card border border-border rounded-2xl p-6 sm:p-8 shadow-card">
-            <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-4 sm:mb-6 font-serif">
+          <div className="bg-card border border-border rounded-3xl p-6 sm:p-8 shadow-card animate-slide-in-left">
+            <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-2 font-serif">
               Send Us a Message
             </h2>
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div>
-                <label
-                  htmlFor="fullName"
-                  className="block text-sm font-medium text-foreground mb-2"
-                >
-                  Full Name *
-                </label>
-                <Input
-                  id="fullName"
-                  name="fullName"
-                  type="text"
-                  required
-                  className="rounded-xl"
-                />
-              </div>
+            <p className="text-sm text-muted-foreground mb-6">
+              Fill out the form below and we will respond within 24 hours.
+            </p>
 
-              <div>
-                <label
-                  htmlFor="phone"
-                  className="block text-sm font-medium text-foreground mb-2"
-                >
-                  Phone Number *
-                </label>
-                <Input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  required
-                  className="rounded-xl"
-                />
+            {state.succeeded ? (
+              <div className="text-center py-12 sm:py-16">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-5">
+                  <CheckCircle2 className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold text-foreground mb-2 font-serif">
+                  Message Sent!
+                </h3>
+                <p className="text-muted-foreground">
+                  Thank you for reaching out. Our team will get back to you
+                  shortly.
+                </p>
               </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label
+                      htmlFor="fullName"
+                      className="block text-sm font-medium text-foreground mb-2"
+                    >
+                      Full Name <span className="text-secondary">*</span>
+                    </label>
+                    <Input
+                      id="fullName"
+                      name="fullName"
+                      type="text"
+                      required
+                      placeholder="Your full name"
+                      className="rounded-xl h-11 bg-muted/50 border-border focus:bg-card transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="phone"
+                      className="block text-sm font-medium text-foreground mb-2"
+                    >
+                      Phone Number <span className="text-secondary">*</span>
+                    </label>
+                    <Input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      required
+                      placeholder="Your phone number"
+                      className="rounded-xl h-11 bg-muted/50 border-border focus:bg-card transition-colors"
+                    />
+                  </div>
+                </div>
 
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-foreground mb-2"
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-foreground mb-2"
+                    >
+                      Email Address
+                    </label>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      placeholder="your@email.com"
+                      className="rounded-xl h-11 bg-muted/50 border-border focus:bg-card transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="childAge"
+                      className="block text-sm font-medium text-foreground mb-2"
+                    >
+                      Child's Age
+                    </label>
+                    <Input
+                      id="childAge"
+                      name="childAge"
+                      type="text"
+                      placeholder="e.g. 3 years"
+                      className="rounded-xl h-11 bg-muted/50 border-border focus:bg-card transition-colors"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium text-foreground mb-2"
+                  >
+                    How can we help you?{" "}
+                    <span className="text-secondary">*</span>
+                  </label>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    required
+                    rows={5}
+                    placeholder="Tell us about your child and how we can assist..."
+                    className="rounded-xl resize-none bg-muted/50 border-border focus:bg-card transition-colors"
+                  />
+                </div>
+
+                <Button
+                  type="submit"
+                  variant="pill"
+                  size="lg"
+                  className="w-full h-12 text-base"
+                  disabled={state.submitting}
                 >
-                  Email Address
-                </label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  className="rounded-xl"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="childAge"
-                  className="block text-sm font-medium text-foreground mb-2"
-                >
-                  Your Child's Age
-                </label>
-                <Input
-                  id="childAge"
-                  name="childAge"
-                  type="text"
-                  className="rounded-xl"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-foreground mb-2"
-                >
-                  How can we help you? *
-                </label>
-                <Textarea
-                  id="message"
-                  name="message"
-                  required
-                  rows={5}
-                  className="rounded-xl resize-none"
-                />
-              </div>
-
-              <Button
-                type="submit"
-                variant="pill"
-                size="lg"
-                className="w-full"
-                disabled={state.submitting}
-              >
-                {state.submitting ? "Sending..." : "Send Message"}
-              </Button>
-            </form>
+                  {state.submitting ? (
+                    "Sending..."
+                  ) : (
+                    <>
+                      Send Message
+                      <Send className="h-4 w-4 ml-2" />
+                    </>
+                  )}
+                </Button>
+              </form>
+            )}
           </div>
 
           {/* Contact Info */}
-          <div className="space-y-6 sm:space-y-8">
+          <div className="space-y-6 sm:space-y-8 animate-slide-in-right">
             <div>
-              <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-4 sm:mb-6 font-serif">
+              <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-2 font-serif">
                 Visit Our Centre
               </h2>
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <MapPin className="h-6 w-6 text-primary" />
+              <p className="text-sm text-muted-foreground mb-6">
+                We welcome you to visit us and see our facilities in person.
+              </p>
+
+              <div className="space-y-5">
+                <div className="flex items-start gap-4 group">
+                  <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
+                    <MapPin className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <p className="font-semibold text-foreground mb-1">
+                    <p className="font-semibold text-foreground mb-0.5 text-sm">
                       Address
                     </p>
-                    <p className="text-muted-foreground">
+                    <p className="text-muted-foreground text-sm leading-relaxed">
                       YMCA School Campus, Kantatoli, Ranchi
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-secondary/10 flex items-center justify-center flex-shrink-0">
-                    <Phone className="h-6 w-6 text-secondary" />
+                <div className="flex items-start gap-4 group">
+                  <div className="w-12 h-12 rounded-2xl bg-secondary/10 flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
+                    <Phone className="h-5 w-5 text-secondary" />
                   </div>
                   <div>
-                    <p className="font-semibold text-foreground mb-1">Phone</p>
+                    <p className="font-semibold text-foreground mb-0.5 text-sm">
+                      Phone
+                    </p>
                     <a
                       href="tel:7033917890"
-                      className="text-muted-foreground hover:text-primary transition-colors duration-300"
+                      className="text-muted-foreground text-sm hover:text-primary transition-colors duration-300"
                     >
                       7033917890
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-yellow/10 flex items-center justify-center flex-shrink-0">
-                    <Mail className="h-6 w-6 text-secondary" />
+                <div className="flex items-start gap-4 group">
+                  <div className="w-12 h-12 rounded-2xl bg-[hsl(25,80%,70%)]/15 flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
+                    <Mail className="h-5 w-5 text-secondary" />
                   </div>
                   <div>
-                    <p className="font-semibold text-foreground mb-1">Email</p>
+                    <p className="font-semibold text-foreground mb-0.5 text-sm">
+                      Email
+                    </p>
                     <a
                       href="mailto:upasana.ranchicentre@gmail.com"
-                      className="text-muted-foreground hover:text-primary transition-colors duration-300 break-all"
+                      className="text-muted-foreground text-sm hover:text-primary transition-colors duration-300 break-all"
                     >
                       upasana.ranchicentre@gmail.com
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-pink/10 flex items-center justify-center flex-shrink-0">
-                    <Clock className="h-6 w-6 text-secondary" />
+                <div className="flex items-start gap-4 group">
+                  <div className="w-12 h-12 rounded-2xl bg-pink/10 flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
+                    <Clock className="h-5 w-5 text-secondary" />
                   </div>
                   <div>
-                    <p className="font-semibold text-foreground mb-1">Hours</p>
-                    <div className="text-muted-foreground space-y-1">
+                    <p className="font-semibold text-foreground mb-0.5 text-sm">
+                      Working Hours
+                    </p>
+                    <div className="text-muted-foreground text-sm space-y-0.5">
                       <p>Mon - Fri: 10:30 AM - 4:00 PM</p>
                       <p>Sat - Sun: Closed</p>
                     </div>
@@ -196,7 +244,7 @@ const Contact = () => {
             </div>
 
             {/* Map */}
-            <div className="rounded-2xl overflow-hidden shadow-card-hover h-[300px] sm:h-[350px] md:h-[400px]">
+            <div className="rounded-2xl overflow-hidden shadow-card-hover h-[280px] sm:h-[320px] md:h-[360px] border border-border">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3662.5!2d85.3479911!3d23.3644669!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4e190ded8871d%3A0xca59b51342c792d7!2sUpasana%20-%20Centre%20for%20Early%20Intervention%20%26%20Child%20Development!5e0!3m2!1sen!2sin!4v1731234567890!5m2!1sen!2sin"
                 width="100%"
@@ -207,6 +255,20 @@ const Contact = () => {
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Upasana Centre Location"
               />
+            </div>
+
+            {/* What to Expect */}
+            <div className="bg-gradient-to-br from-primary/5 to-muted rounded-2xl p-5 sm:p-6 border border-border">
+              <h3 className="text-base sm:text-lg font-bold text-foreground mb-2 font-serif">
+                What to Expect When You Visit
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                When you visit our centre, our team will warmly welcome you and
+                provide a guided tour of our facilities. We will discuss your
+                child's needs, explain our assessment process, and help you
+                understand which programs might benefit your child the most.
+                Please bring any existing medical reports or evaluations.
+              </p>
             </div>
           </div>
         </div>
