@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+import {
   Calendar,
   Camera,
   Flag,
@@ -215,15 +223,26 @@ const Events = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto">
-            {galleryPlaceholders.map((gradient, index) => (
-              <div
-                key={index}
-                className={`aspect-square bg-gradient-to-br ${gradient.from} ${gradient.to} rounded-2xl flex items-center justify-center hover:shadow-card-hover transition-all duration-400 hover:-translate-y-1 cursor-pointer group`}
-              >
-                <Camera className="h-10 w-10 sm:h-12 sm:w-12 text-primary/25 group-hover:text-primary/40 transition-all duration-400" />
-              </div>
-            ))}
+          <div className="max-w-5xl mx-auto">
+            <Carousel
+              className="w-full"
+              opts={{ loop: true, align: "start" }}
+              plugins={[Autoplay({ delay: 3500, stopOnInteraction: true })]}
+            >
+              <CarouselContent className="-ml-4">
+                {galleryPlaceholders.map((gradient, index) => (
+                  <CarouselItem key={index} className="pl-4 basis-full sm:basis-1/2 md:basis-1/3">
+                    <div
+                      className={`aspect-square bg-gradient-to-br ${gradient.from} ${gradient.to} rounded-2xl flex items-center justify-center shadow-card`}
+                    >
+                      <Camera className="h-10 w-10 sm:h-12 sm:w-12 text-primary/25" />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="hidden sm:flex -left-4 md:-left-12" />
+              <CarouselNext className="hidden sm:flex -right-4 md:-right-12" />
+            </Carousel>
           </div>
         </div>
       </section>

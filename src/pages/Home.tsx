@@ -35,14 +35,14 @@ import heroImage from "@/assets/hero-therapy.jpg";
 import drImage from "@/assets/dr-uma-sengupta.jpg";
 import { useCountUp } from "@/hooks/use-count-up";
 
-const CountUpStat = ({ end, suffix, label, icon: Icon }: { end: number; suffix: string; label: string; icon: LucideIcon }) => {
+const CountUpStat = ({ end, suffix, label, icon: Icon, iconBg, iconColor, numberColor }: { end: number; suffix: string; label: string; icon: LucideIcon; iconBg: string; iconColor: string; numberColor: string }) => {
   const { ref, display } = useCountUp({ end, suffix, duration: 2200 });
   return (
     <div ref={ref} className="text-center group">
-      <div className="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-primary/10 text-primary mb-3 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-400">
+      <div className={`inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-2xl ${iconBg} ${iconColor} mb-3 transition-all duration-400`}>
         <Icon className="h-6 w-6 sm:h-7 sm:w-7" />
       </div>
-      <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary font-serif tabular-nums">
+      <div className={`text-3xl sm:text-4xl md:text-5xl font-bold font-serif tabular-nums ${numberColor}`}>
         {display}
       </div>
       <div className="text-sm sm:text-base text-muted-foreground mt-1">
@@ -103,10 +103,10 @@ const Home = () => {
   ];
 
   const impactStats = [
-    { end: 100, suffix: "+", label: "Children Supported", icon: Heart },
-    { end: 30, suffix: "+", label: "Qualified Professionals", icon: Users },
-    { end: 37, suffix: "+", label: "Years of Combined Experience", icon: Sparkles },
-    { end: 97, suffix: "%", label: "Parent Satisfaction Rate", icon: Star },
+    { end: 100, suffix: "+", label: "Children Supported", icon: Heart, iconBg: "bg-primary/10", iconColor: "text-primary", numberColor: "text-primary" },
+    { end: 30, suffix: "+", label: "Qualified Professionals", icon: Users, iconBg: "bg-secondary/10", iconColor: "text-secondary", numberColor: "text-secondary" },
+    { end: 37, suffix: "+", label: "Years of Combined Experience", icon: Sparkles, iconBg: "bg-yellow/15", iconColor: "text-[hsl(25,80%,55%)]", numberColor: "text-[hsl(25,80%,55%)]" },
+    { end: 97, suffix: "%", label: "Parent Satisfaction Rate", icon: Star, iconBg: "bg-pink/10", iconColor: "text-[hsl(12,70%,55%)]", numberColor: "text-[hsl(12,70%,55%)]" },
   ];
 
   const coreValues = [
@@ -135,7 +135,7 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] sm:min-h-screen flex items-center justify-center overflow-hidden pt-16 sm:pt-0">
+      <section className="relative min-h-[90vh] sm:min-h-screen flex items-center justify-center overflow-hidden pt-[72px] sm:pt-0">
         <div
           className="absolute inset-0 z-0"
           style={{
@@ -203,7 +203,7 @@ const Home = () => {
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 max-w-5xl mx-auto">
             {impactStats.map((stat, index) => (
-              <CountUpStat key={index} end={stat.end} suffix={stat.suffix} label={stat.label} icon={stat.icon} />
+              <CountUpStat key={index} end={stat.end} suffix={stat.suffix} label={stat.label} icon={stat.icon} iconBg={stat.iconBg} iconColor={stat.iconColor} numberColor={stat.numberColor} />
             ))}
           </div>
         </div>
@@ -475,25 +475,34 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Gallery Grid */}
+          {/* Gallery Carousel */}
           <div className="max-w-6xl mx-auto mt-10 sm:mt-14">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
-              {[
-                { from: "from-primary/20", to: "to-secondary/10" },
-                { from: "from-secondary/20", to: "to-yellow/10" },
-                { from: "from-yellow/20", to: "to-primary/10" },
-                { from: "from-primary/15", to: "to-yellow/15" },
-                { from: "from-secondary/15", to: "to-primary/10" },
-                { from: "from-yellow/15", to: "to-secondary/10" },
-              ].map((gradient, index) => (
-                <div
-                  key={index}
-                  className={`aspect-[4/3] bg-gradient-to-br ${gradient.from} ${gradient.to} rounded-2xl flex items-center justify-center hover:shadow-card-hover transition-all duration-400 hover:-translate-y-1`}
-                >
-                  <Camera className="h-10 w-10 sm:h-12 sm:w-12 text-primary/25" />
-                </div>
-              ))}
-            </div>
+            <Carousel
+              className="w-full"
+              opts={{ loop: true, align: "start" }}
+              plugins={[Autoplay({ delay: 3000, stopOnInteraction: true })]}
+            >
+              <CarouselContent className="-ml-4">
+                {[
+                  { from: "from-primary/20", to: "to-secondary/10" },
+                  { from: "from-secondary/20", to: "to-yellow/10" },
+                  { from: "from-yellow/20", to: "to-primary/10" },
+                  { from: "from-primary/15", to: "to-yellow/15" },
+                  { from: "from-secondary/15", to: "to-primary/10" },
+                  { from: "from-yellow/15", to: "to-secondary/10" },
+                ].map((gradient, index) => (
+                  <CarouselItem key={index} className="pl-4 basis-full sm:basis-1/2 md:basis-1/3">
+                    <div
+                      className={`aspect-[4/3] bg-gradient-to-br ${gradient.from} ${gradient.to} rounded-2xl flex items-center justify-center shadow-card`}
+                    >
+                      <Camera className="h-10 w-10 sm:h-12 sm:w-12 text-primary/25" />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="hidden sm:flex -left-4 md:-left-12" />
+              <CarouselNext className="hidden sm:flex -right-4 md:-right-12" />
+            </Carousel>
           </div>
         </div>
       </section>
