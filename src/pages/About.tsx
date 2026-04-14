@@ -1,10 +1,10 @@
 import { CheckCircle2, Target, Eye, Heart, Lightbulb } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import sunilImg from "@/assets/sunil-lakra.jpg";
-import umaImg from "@/assets/dr-uma-sengupta.jpg";
-import praveenImg from "@/assets/Praveen-Sharma.png";
-import akhilImg from "@/assets/Akhil-Poddar.jpg";
-import uttamImg from "@/assets/Uttam-Jain.jpg";
+import sunilImg from "@/assets/team/sunil-lakra.jpg";
+import umaImg from "@/assets/team/dr-uma-sengupta.jpg";
+import praveenImg from "@/assets/team/Praveen-Sharma.png";
+import akhilImg from "@/assets/team/Akhil-Poddar.jpg";
+import uttamImg from "@/assets/team/Uttam-Jain.jpg";
 import trusteePlaceholder from "@/assets/trustee-placeholder.jpg";
 import CharitableBadge from "@/components/CharitableBadge";
 

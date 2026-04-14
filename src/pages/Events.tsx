@@ -20,12 +20,22 @@ import {
   ChevronRight,
 } from "lucide-react";
 
+import indDayImg from "@/assets/gallery/Independence day.jpeg";
+import eventImg1 from "@/assets/gallery/1.jpg";
+import eventImg2 from "@/assets/gallery/2.jpg";
+
+const galleryModules = import.meta.glob('@/assets/gallery/*.{jpg,jpeg,png}', { eager: true });
+const galleryImages = Object.entries(galleryModules)
+  .filter(([path]) => !path.includes('Gemini_Generated_Image'))
+  .map(([, module]) => (module as any).default);
+
 const Events = () => {
   const events = [
     {
       title: "Independence Day Celebration",
       date: "August 15, 2025",
       icon: Flag,
+      image: indDayImg,
       description:
         "Our Independence Day celebration is a vibrant display of patriotism and joy. Children participate in flag hoisting, cultural performances, singing national songs, and creative activities. It is a day that fills everyone with pride and togetherness, reminding us of the freedom and potential within every child.",
       highlights: [
@@ -39,27 +49,28 @@ const Events = () => {
       iconColor: "text-primary",
       align: "left" as const,
     },
-    {
-      title: "Diwali Festival of Lights",
-      date: "October 2025",
-      icon: Sparkles,
-      description:
-        "Diwali at Upasana is a magical celebration where our children experience the joy of the festival of lights. From decorating diyas and making rangoli to enjoying sweets and sparklers, every child gets to participate in activities that light up their world and bring families together in celebration.",
-      highlights: [
-        "Diya painting and decoration workshops",
-        "Rangoli making with children",
-        "Cultural performances and dance",
-        "Sweets distribution and community feast",
-      ],
-      gradient: "from-secondary/20 to-yellow/15",
-      iconBg: "bg-secondary/10",
-      iconColor: "text-secondary",
-      align: "right" as const,
-    },
+    // {
+    //   title: "Diwali Festival of Lights",
+    //   date: "October 2025",
+    //   icon: Sparkles,
+    //   description:
+    //     "Diwali at Upasana is a magical celebration where our children experience the joy of the festival of lights. From decorating diyas and making rangoli to enjoying sweets and sparklers, every child gets to participate in activities that light up their world and bring families together in celebration.",
+    //   highlights: [
+    //     "Diya painting and decoration workshops",
+    //     "Rangoli making with children",
+    //     "Cultural performances and dance",
+    //     "Sweets distribution and community feast",
+    //   ],
+    //   gradient: "from-secondary/20 to-yellow/15",
+    //   iconBg: "bg-secondary/10",
+    //   iconColor: "text-secondary",
+    //   align: "right" as const,
+    // },
     {
       title: "Republic Day Celebration",
       date: "January 26, 2026",
       icon: Star,
+      image: eventImg1,
       description:
         "Republic Day at Upasana celebrates the spirit of unity and equality. Our children take part in a special assembly with flag unfurling, speeches about the values of our constitution, and fun group activities. It is a day dedicated to celebrating every child's right to care, education, and inclusion.",
       highlights: [
@@ -71,12 +82,13 @@ const Events = () => {
       gradient: "from-yellow/20 to-primary/10",
       iconBg: "bg-yellow/10",
       iconColor: "text-foreground",
-      align: "left" as const,
+      align: "right" as const,
     },
     {
       title: "Annual Day Celebration",
       date: "March 2026",
       icon: PartyPopper,
+      image: eventImg2,
       description:
         "Our Annual Day is the most anticipated event of the year. It showcases the incredible progress and talents of our children through performances, exhibitions, and award ceremonies. Families, supporters, and community members come together to celebrate every milestone achieved throughout the year.",
       highlights: [
@@ -88,7 +100,7 @@ const Events = () => {
       gradient: "from-primary/15 to-secondary/15",
       iconBg: "bg-primary/10",
       iconColor: "text-primary",
-      align: "right" as const,
+      align: "left" as const,
     },
   ];
 
@@ -143,33 +155,34 @@ const Events = () => {
             {events.map((event, index) => (
               <div
                 key={index}
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center ${
-                  event.align === "right" ? "lg:direction-rtl" : ""
-                }`}
+                className={`grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center ${event.align === "right" ? "lg:direction-rtl" : ""
+                  }`}
               >
                 {/* Image placeholder */}
                 <div
-                  className={`${
-                    event.align === "right" ? "lg:order-2" : "lg:order-1"
-                  }`}
+                  className={`${event.align === "right" ? "lg:order-2" : "lg:order-1"
+                    }`}
                 >
                   <div
                     className={`aspect-[4/3] bg-gradient-to-br ${event.gradient} rounded-2xl flex items-center justify-center shadow-card hover:shadow-card-hover transition-all duration-400 overflow-hidden`}
                   >
-                    <div className="text-center">
-                      <event.icon className="h-16 w-16 sm:h-20 sm:w-20 text-primary/30 mx-auto mb-3" />
-                      <p className="text-sm text-muted-foreground/60">
-                        Event photos coming soon
-                      </p>
-                    </div>
+                    {(event as any).image ? (
+                      <img src={(event as any).image} alt={event.title} className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+                    ) : (
+                      <div className="text-center">
+                        <event.icon className="h-16 w-16 sm:h-20 sm:w-20 text-primary/30 mx-auto mb-3" />
+                        <p className="text-sm text-muted-foreground/60">
+                          Event photos coming soon
+                        </p>
+                      </div>
+                    )}
                   </div>
                 </div>
 
                 {/* Content */}
                 <div
-                  className={`space-y-4 ${
-                    event.align === "right" ? "lg:order-1" : "lg:order-2"
-                  }`}
+                  className={`space-y-4 ${event.align === "right" ? "lg:order-1" : "lg:order-2"
+                    }`}
                 >
                   <div className="flex items-center gap-3">
                     <div
@@ -230,12 +243,12 @@ const Events = () => {
               plugins={[Autoplay({ delay: 3500, stopOnInteraction: true })]}
             >
               <CarouselContent className="-ml-4">
-                {galleryPlaceholders.map((gradient, index) => (
+                {galleryImages.map((imgSrc, index) => (
                   <CarouselItem key={index} className="pl-4 basis-full sm:basis-1/2 md:basis-1/3">
                     <div
-                      className={`aspect-square bg-gradient-to-br ${gradient.from} ${gradient.to} rounded-2xl flex items-center justify-center shadow-card`}
+                      className="aspect-square rounded-2xl flex items-center justify-center shadow-card overflow-hidden"
                     >
-                      <Camera className="h-10 w-10 sm:h-12 sm:w-12 text-primary/25" />
+                      <img src={imgSrc} alt={`Upasana Gallery ${index + 1}`} className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
                     </div>
                   </CarouselItem>
                 ))}

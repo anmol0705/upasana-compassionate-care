@@ -54,7 +54,7 @@ const Navbar = () => {
                 Upasana
               </span>
               <span className="text-[11px] text-muted-foreground hidden md:block leading-tight">
-                Nurturing Potential, Building Futures
+                Centre for Early Intervention and Child Development
               </span>
             </div>
           </Link>

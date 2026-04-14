@@ -31,9 +31,14 @@ import {
   Camera,
   type LucideIcon,
 } from "lucide-react";
-import heroImage from "@/assets/hero-therapy.jpg";
-import drImage from "@/assets/dr-uma-sengupta.jpg";
+import heroImage from "@/assets/hero-image.png";
+import drImage from "@/assets/team/dr-uma-sengupta.jpg";
 import { useCountUp } from "@/hooks/use-count-up";
+
+const galleryModules = import.meta.glob('@/assets/gallery/*.{jpg,jpeg,png}', { eager: true });
+const galleryImages = Object.entries(galleryModules)
+  .filter(([path]) => !path.includes('Gemini_Generated_Image'))
+  .map(([, module]) => (module as any).default);
 
 const CountUpStat = ({ end, suffix, label, icon: Icon, iconBg, iconColor, numberColor }: { end: number; suffix: string; label: string; icon: LucideIcon; iconBg: string; iconColor: string; numberColor: string }) => {
   const { ref, display } = useCountUp({ end, suffix, duration: 2200 });
@@ -139,7 +144,7 @@ const Home = () => {
         <div
           className="absolute inset-0 z-0"
           style={{
-            backgroundImage: `linear-gradient(135deg, hsla(142, 40%, 35%, 0.75), hsla(16, 60%, 45%, 0.65)), url(${heroImage})`,
+            backgroundImage: `linear-gradient(135deg, hsla(140, 18%, 3%, 0.75), hsla(0, 0%, 0%, 0.65)), url(${heroImage})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -148,20 +153,20 @@ const Home = () => {
         <div className="absolute top-20 right-10 w-64 h-64 rounded-full bg-white/5 blur-xl z-0" />
         <div className="absolute bottom-20 left-10 w-48 h-48 rounded-full bg-white/5 blur-xl z-0" />
 
-        <div className="container mx-auto px-6 sm:px-8 relative z-10 text-center animate-fade-in py-12 sm:py-20">
+        <div className="container mx-auto px-6 sm:px-8 relative z-10 text-center py-12 sm:py-20">
           {/* Trust Badge */}
-          <div className="mb-6">
+          <div className="mb-6 opacity-0 animate-fade-in-up">
             <CharitableBadge variant="light" />
           </div>
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 sm:mb-8 leading-tight px-2 font-serif">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 sm:mb-8 leading-tight px-2 font-serif opacity-0 animate-fade-in-up animation-delay-200">
             Every Child Deserves a<br className="hidden sm:block" /> Chance to Shine
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-white/95 mb-8 sm:mb-10 max-w-3xl mx-auto font-light px-4">
+          <p className="text-lg sm:text-xl md:text-2xl text-white/95 mb-8 sm:mb-10 max-w-3xl mx-auto font-light px-4 opacity-0 animate-fade-in-up animation-delay-400">
             Compassionate early intervention and child development for children
             with special needs — where every milestone matters
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-md sm:max-w-none mx-auto px-4">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-md sm:max-w-none mx-auto px-4 opacity-0 animate-fade-in-up animation-delay-600">
             <Link to="/services" className="w-full sm:w-auto">
               <Button
                 variant="pill"
@@ -483,19 +488,12 @@ const Home = () => {
               plugins={[Autoplay({ delay: 3000, stopOnInteraction: true })]}
             >
               <CarouselContent className="-ml-4">
-                {[
-                  { from: "from-primary/20", to: "to-secondary/10" },
-                  { from: "from-secondary/20", to: "to-yellow/10" },
-                  { from: "from-yellow/20", to: "to-primary/10" },
-                  { from: "from-primary/15", to: "to-yellow/15" },
-                  { from: "from-secondary/15", to: "to-primary/10" },
-                  { from: "from-yellow/15", to: "to-secondary/10" },
-                ].map((gradient, index) => (
+                {galleryImages.map((imgSrc, index) => (
                   <CarouselItem key={index} className="pl-4 basis-full sm:basis-1/2 md:basis-1/3">
                     <div
-                      className={`aspect-[4/3] bg-gradient-to-br ${gradient.from} ${gradient.to} rounded-2xl flex items-center justify-center shadow-card`}
+                      className="aspect-[4/3] rounded-2xl flex items-center justify-center shadow-card overflow-hidden"
                     >
-                      <Camera className="h-10 w-10 sm:h-12 sm:w-12 text-primary/25" />
+                      <img src={imgSrc} alt={`Upasana Centre Gallery ${index + 1}`} className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
                     </div>
                   </CarouselItem>
                 ))}

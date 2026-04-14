@@ -1,20 +1,28 @@
 import { Users } from "lucide-react";
-import drImage from "@/assets/dr-uma-sengupta.webp";
+import drImage from "@/assets/team/dr-uma-sengupta.jpg";
+import sumanImg from "@/assets/teachers/suman-first.jpeg";
+import sunilImg from "@/assets/teachers/Sunil-Kumar-Mishra-Speech-n-language-therapist-2nd.png";
+import nishaImg from "@/assets/teachers/nisha-3rd.jpeg";
+import wilsonImg from "@/assets/teachers/wilson sirum-4th.jpeg";
+import somyaImg from "@/assets/teachers/somya prasad-5th.jpeg";
+import soniImg from "@/assets/teachers/soni kumari-before wilson.jpeg";
+import santoshiImg from "@/assets/teachers/santoshi Kushwara-last.jpeg";
 
 interface TeamMember {
   name: string;
   title: string;
+  image?: string;
 }
 
 const Team = () => {
   const teamMembers: TeamMember[] = [
-    { name: "Swati Kumari Minakrr", title: "ABA Therapist" },
-    { name: "Punam Lakra", title: "Special Educator" },
-    { name: "Archana Kushwara", title: "Speech Therapist" },
-    { name: "Somya Prasad", title: "Physiotherapist" },
-    { name: "Soni Kumari", title: "Behaviour Therapist" },
-    { name: "Somen Sengle", title: "OT / Physiotherapist" },
-    { name: "Naveen Murmu", title: "Sensory Integration Therapist" },
+    { name: "Suman Sangita", title: "ABA Therapist", image: sumanImg },
+    { name: "Sunil Kumar Mishra", title: "Speech & Language Therapist", image: sunilImg },
+    { name: "Nisha Swati Lakra", title: "Special Educator", image: nishaImg },
+    { name: "Soni Kumari", title: "Special Educator", image: soniImg },
+    { name: "Wilson Sirum", title: "Sensory Integration Therapist", image: wilsonImg },
+    { name: "Somya Prasad", title: "Physiotherapist", image: somyaImg },
+    { name: "Santoshi Kushwara", title: "Occupational Therapist", image: santoshiImg },
   ];
 
   const gradients = [
@@ -106,11 +114,15 @@ const Team = () => {
                 className="bg-card border border-border rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-400 hover:-translate-y-1 animate-fade-in-up"
               >
                 <div
-                  className={`aspect-[4/3] bg-gradient-to-br ${gradients[index % gradients.length]} flex items-center justify-center`}
+                  className={`aspect-[4/3] bg-gradient-to-br ${gradients[index % gradients.length]} flex items-center justify-center overflow-hidden`}
                 >
-                  <div className="w-20 h-20 rounded-full bg-background/60 flex items-center justify-center">
-                    <Users className="h-10 w-10 text-primary/50" />
-                  </div>
+                  {member.image ? (
+                    <img src={member.image} alt={member.name} className="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105" />
+                  ) : (
+                    <div className="w-20 h-20 rounded-full bg-background/60 flex items-center justify-center">
+                      <Users className="h-10 w-10 text-primary/50" />
+                    </div>
+                  )}
                 </div>
                 <div className="p-5 text-center">
                   <h3 className="text-lg font-bold text-foreground mb-1 font-serif">
@@ -129,11 +141,15 @@ const Team = () => {
                 className="bg-card border border-border rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-400 hover:-translate-y-1 animate-fade-in-up"
               >
                 <div
-                  className={`aspect-[4/3] bg-gradient-to-br ${gradients[(index + 4) % gradients.length]} flex items-center justify-center`}
+                  className={`aspect-[4/3] bg-gradient-to-br ${gradients[(index + 4) % gradients.length]} flex items-center justify-center overflow-hidden`}
                 >
-                  <div className="w-20 h-20 rounded-full bg-background/60 flex items-center justify-center">
-                    <Users className="h-10 w-10 text-primary/50" />
-                  </div>
+                  {member.image ? (
+                    <img src={member.image} alt={member.name} className="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105" />
+                  ) : (
+                    <div className="w-20 h-20 rounded-full bg-background/60 flex items-center justify-center">
+                      <Users className="h-10 w-10 text-primary/50" />
+                    </div>
+                  )}
                 </div>
                 <div className="p-5 text-center">
                   <h3 className="text-lg font-bold text-foreground mb-1 font-serif">
